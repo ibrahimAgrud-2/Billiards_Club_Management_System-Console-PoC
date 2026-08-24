@@ -1,0 +1,8 @@
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\BCMS_ConsoleApp.exe.config
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\BCMS_ConsoleApp.exe
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\BCMS_ConsoleApp.pdb
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\obj\Debug\BCMS_ConsoleApp.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\obj\Debug\BCMS_ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\obj\Debug\BCMS_ConsoleApp.exe
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\obj\Debug\BCMS_ConsoleApp.pdb
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\obj\Debug\BCMS_ConsoleApp.exe.config
