@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36908.2 d17.14
+VisualStudioVersion = 17.14.36908.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCMS_ConsoleApp", "BCMS_ConsoleApp\BCMS_ConsoleApp.csproj", "{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCMS_Data", "BCMS_Data\BCMS_Data.csproj", "{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCMS_Business", "BCMS_Business\BCMS_Business.csproj", "{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

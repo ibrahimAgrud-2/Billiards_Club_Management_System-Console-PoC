@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BCMS_Business\BCMS_Business.csproj">
+      <Project>{b119ebfd-4b62-4da6-8d1b-02e9bfe966c4}</Project>
+      <Name>BCMS_Business</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

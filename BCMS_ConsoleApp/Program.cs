@@ -6,7 +6,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
-using 
+using BCMS_Business;
+using BCMS_Business.People;
 
 namespace BCMS_ConsoleApp
 {
@@ -78,7 +79,13 @@ namespace BCMS_ConsoleApp
         static void Main(string[] args)
         {
 
-          DataTable dt=personda
+            DataTable dt = Person.GetPersonList();
+
+
+            foreach (DataRow item in dt.Rows)
+            {
+                Console.WriteLine(item["PersonID"]);
+            }
 
         }
     }
