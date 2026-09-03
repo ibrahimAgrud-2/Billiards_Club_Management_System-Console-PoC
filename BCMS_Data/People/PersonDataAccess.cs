@@ -50,7 +50,5 @@ namespace BCMS_Data.People
 
         }
 
-       
-
     }
 }

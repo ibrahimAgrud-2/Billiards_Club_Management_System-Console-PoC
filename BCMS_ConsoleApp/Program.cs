@@ -15,77 +15,72 @@ namespace BCMS_ConsoleApp
     {
 
 
-        //using nerede 
-    //        public static bool Find(int personID, ref string firstName, ref string lastName, ref DateTime? dateOfBirth, ref string phone, ref string address, ref string email, ref string imagePath)
-    //        {
+//        using nerede 
+//            public static bool Find(int personID, ref string firstName, ref string lastName, ref DateTime? dateOfBirth, ref string phone, ref string address, ref string email, ref string imagePath)
+//    {
 
-     
-    //            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
-    //            {
-    //                string query = "select * from People where ID=@ID";
 
-    //                using (SqlCommand cmd = new SqlCommand(query, connection)
-    //)
-    //                {
-    //                    cmd.Parameters.AddWithValue("@ID", personID);
+//        using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+//        {
+//            string query = "select * from People where ID=@ID";
 
-    //                    try
-    //                    {
-    //                        connection.Open();
-    //                        using (SqlDataReader read = cmd.ExecuteReader())
-    //                        {
-    //                            if (read.Read())
-    //                            {
+//            using (SqlCommand cmd = new SqlCommand(query, connection)
+//)
+//            {
+//                cmd.Parameters.AddWithValue("@ID", personID);
 
-    //                                personID = Convert.ToInt32(read["ID"]);
-    //                                firstName = read["firstName"].ToString();
-    //                                lastName = read["lastName"].ToString();
-    //                                dateOfBirth = Convert.ToDateTime(read["dateOfBirth"]);
-    //                                phone = read["phone"].ToString();
+//                try
+//                {
+//                    connection.Open();
+//                    using (SqlDataReader read = cmd.ExecuteReader())
+//                    {
+//                        if (read.Read())
+//                        {
 
-    //                                address = read["address"]?.ToString();
-    //                                email = read["Email"]?.ToString();
-    //                                imagePath = read["ImagePath"]?.ToString();
+//                            personID = Convert.ToInt32(read["ID"]);
+//                            firstName = read["firstName"].ToString();
+//                            lastName = read["lastName"].ToString();
+//                            dateOfBirth = Convert.ToDateTime(read["dateOfBirth"]);
+//                            phone = read["phone"].ToString();
 
-    //                                read.Close();
+//                            address = read["address"]?.ToString();
+//                            email = read["Email"]?.ToString();
+//                            imagePath = read["ImagePath"]?.ToString();
 
-    //                                return true;
-    //                            }
+//                            read.Close();
 
-    //                        }
-    //                    catch (Exception ex)
-    //                    {
-    //                        //Log message to view logger
-    //                        return false;
-    //                    }
-    //                    finally
-    //                    {
-    //                        connection.Close();
+//                            return true;
+//                        }
 
-    //                    }
-    //                }
-                          
-    //                }
-                
+//                    }
+//                        catch (Exception ex)
+//                {
+//                    //Log message to view logger
+//                    return false;
+//                }
+//                finally
+//                {
+//                    connection.Close();
 
-    //            }
+//                }
+//            }
 
-    //            return false;
+//        }
 
-    //        }
+
+//    }
+
+//                return false;
+
+//            }
 
 
 
         static void Main(string[] args)
         {
+            //Layer layer adım adım gidelim.
 
-            DataTable dt = Person.GetPersonList();
-
-
-            foreach (DataRow item in dt.Rows)
-            {
-                Console.WriteLine(item["PersonID"]);
-            }
+            Person p=new Person();
 
         }
     }
