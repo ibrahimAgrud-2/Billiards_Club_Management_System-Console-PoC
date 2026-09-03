@@ -79,6 +79,7 @@ namespace BCMS_ConsoleApp
         static void Main(string[] args)
         {
             //Layer layer adım adım gidelim.
+            //cloude ile birlikte gidebilirsin (optional).
 
             Person p=new Person();
 
