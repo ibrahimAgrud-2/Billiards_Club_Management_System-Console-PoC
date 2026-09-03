@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
+using 
 
 namespace BCMS_ConsoleApp
 {
@@ -78,7 +78,7 @@ namespace BCMS_ConsoleApp
         static void Main(string[] args)
         {
 
-          
+          DataTable dt=personda
 
         }
     }

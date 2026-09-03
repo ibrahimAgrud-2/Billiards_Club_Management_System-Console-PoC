@@ -1,0 +1,46 @@
+.vs
+# Build sonuçları
+bin/
+obj/
+
+# Visual Studio kullanıcı dosyaları
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# Debug logları
+*.log
+
+# NuGet paketleri (genelde)
+packages/
+
+# Geçici dosyalar
+*.tmp
+*.temp
+
+# Windows thumbnail/cache
+Thumbs.db
+Desktop.ini
+
+# Test sonuçları
+TestResults/
+
+# Publish çıktıları
+publish/
+
+# Visual Studio Code
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+# SQLite / local db örnekleri
+*.db
+*.db-shm
+*.db-wal
