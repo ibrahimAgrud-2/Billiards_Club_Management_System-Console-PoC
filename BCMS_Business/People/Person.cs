@@ -82,6 +82,13 @@ namespace BCMS_Business.People
         {
             return PersonDataAccess.GetPeople();
         }
+        
+        
+        /// <summary>
+        /// ID ile arama yapar. Eğer DB'de veri varsa o veriyi objeye doldurur
+        /// </summary>
+        /// <param name="personID">Aranacak kişi ID'si</param>
+        /// <returns>Eğer kayıt bulunabilirse person objesi eğer bulunamazsa null</returns>
         public static Person Find(int personID)
         {
 
@@ -115,6 +122,10 @@ namespace BCMS_Business.People
             return PersonDataAccess.IsPersonExists(personID);
         }
 
+        /// <summary>
+        /// Mode'u add olan person objesini DB'ye ekler.
+        /// </summary>
+        /// <returns>Geriye Otomatik olarak SSMS tarafından verilen ID'i dönderir</returns>
         private bool _AddNewPerson()
         {
             //call DataAccess Layer 
@@ -124,10 +135,28 @@ namespace BCMS_Business.People
             return (this.PersonID != -1);
         }
 
+        /// <summary>
+        /// Save metodu ile çağırılır. Eğer person DB'de varsa tüm alanlar yeni bilgiler ile güncellenir
+        /// </summary>
+        /// <returns>Eğer update işlemi sorunsuz olduysa true</returns>
         private bool _UpdatePerson()
         {
             return PersonDataAccess.UpdatePerson(this.PersonID,this.FirstName, this.LastName, this.BirthDate, this.Phone, this.Address, this.Email, this.ImagePath);
         }
+
+        /// <summary>
+        /// person DB'de varsa siler.
+        /// </summary>
+        /// <returns>Eğer silme işlemi başarılı olursa true</returns>
+        public bool DeletePerson()
+        {
+            return PersonDataAccess.DeletePerson(this.PersonID);
+        }
+
+        /// <summary>
+        /// Update ve Add işlemleri bu fonksiyondan çağrılır. Mode eğer add ise o obje için add fonksiyonun çağırır. Değilse  o obje için update fonksiyonunu çağırır.
+        /// </summary>
+        /// <returns>Eğer Add/Update işlemi hatasız olursa true döner</returns>
         public bool Save()
         {
             if (this.Mode==enMode.AddNew)

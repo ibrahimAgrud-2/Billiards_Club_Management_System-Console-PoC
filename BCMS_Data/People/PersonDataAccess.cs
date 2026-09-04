@@ -247,5 +247,42 @@ namespace BCMS_Data.People
             return (rowsAffected > 0);
         }
 
+
+        public static bool DeletePerson(int personID)
+        {
+            int rowsAffected = -1;
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            {
+                string query = @"delete People where personID=@PersonID";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+
+                    cmd.Parameters.AddWithValue(@"PersonID",personID);
+
+
+                    try
+                    {
+
+                        connection.Open();
+
+                        rowsAffected = cmd.ExecuteNonQuery();
+
+
+
+                    }
+                    catch (Exception)
+                    {
+                        //Logging will be implemented later on
+                        Console.WriteLine("****An error occurred. Function: DeletePerson****");
+                        return false;
+                    }
+                }
+            }
+
+            return (rowsAffected > 0);
+
+        }
     }
 }

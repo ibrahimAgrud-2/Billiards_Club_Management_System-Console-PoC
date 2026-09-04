@@ -38,15 +38,10 @@ namespace BCMS_ConsoleApp
             p1.ImagePath = "C";
             p1.Phone = "0531231123";
 
-            if(p1.Save())
+            if (p1.DeletePerson())
             {
-                Console.WriteLine("Saved successfully");
+                Console.WriteLine("Person Deleted Successfully");
             }
-            else
-            {
-                Console.WriteLine("An error occurred");
-            }
-
 
 
         }
