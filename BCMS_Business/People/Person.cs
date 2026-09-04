@@ -10,6 +10,7 @@ namespace BCMS_Business.People
         public int PersonID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get { return FirstName + " " + LastName; } }
         public DateTime BirthDate { get; set; }
         public string Phone { get; set; }
 
@@ -113,6 +114,40 @@ namespace BCMS_Business.People
         {
             return PersonDataAccess.IsPersonExists(personID);
         }
+
+        private bool _AddNewPerson()
+        {
+            //call DataAccess Layer 
+
+            this.PersonID = PersonDataAccess.AddNewPerson(this.FirstName, this.LastName, this.BirthDate, this.Phone, this.Address, this.Email, this.ImagePath);
+
+            return (this.PersonID != -1);
+        }
+
+        private bool _UpdatePerson()
+        {
+            return PersonDataAccess.UpdatePerson(this.PersonID,this.FirstName, this.LastName, this.BirthDate, this.Phone, this.Address, this.Email, this.ImagePath);
+        }
+        public bool Save()
+        {
+            if (this.Mode==enMode.AddNew)
+            {
+                if (_AddNewPerson())
+                {
+                    this.Mode = enMode.Update;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        
+                return _UpdatePerson();
+            
+
+        }
+
 
     }
 }

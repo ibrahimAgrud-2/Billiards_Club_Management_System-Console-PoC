@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -115,6 +116,135 @@ namespace BCMS_Data.People
                 }
             }
             return false;
+        }
+
+         
+        /// <summary>
+        /// add Person to database
+        /// </summary>
+        /// <returns>Otomatik olarak verilen person IDsi</returns>
+        public static int AddNewPerson(string firstName,  string lastName,  DateTime BirthDate,  string phone,  string address,  string email,  string imagePath)
+        {
+            int personID = -1;
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            {
+                string query = @"INSERT INTO People (FirstName,LastName,
+                                                   BirthDate,Address,Phone,ImagePath, Email)
+                             VALUES (@FirstName,@LastName,
+                                     @BirthDate,@Address,@Phone,@ImagePath,@Email);
+                             SELECT SCOPE_IDENTITY();";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@FirstName", firstName);
+                    cmd.Parameters.AddWithValue("@LastName", lastName);
+                    cmd.Parameters.AddWithValue("@BirthDate", BirthDate.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@Phone", phone);
+                
+
+                    if (!string.IsNullOrEmpty(address))
+                        cmd.Parameters.AddWithValue("@Address", address);
+                    else
+                        cmd.Parameters.AddWithValue("@Address", System.DBNull.Value);
+                 
+                    if (!string.IsNullOrEmpty(email))
+                        cmd.Parameters.AddWithValue("@Email", email);
+                    else
+                        cmd.Parameters.AddWithValue("@Email", System.DBNull.Value);
+                    
+                    if (!string.IsNullOrEmpty(imagePath))
+                        cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+                    else
+                        cmd.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+
+                    try
+                    {
+
+                        connection.Open();
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                        {
+                            personID = insertedID;
+                        }
+
+
+
+                    }
+                    catch (Exception)
+                    {
+                        //Logging will be implemented later on
+                        Console.WriteLine("****An error occurred. Function: AddNewPerson****");
+                        return -1;
+                    }
+                }
+            }
+
+            return personID;
+        }
+
+        public static bool UpdatePerson(int personID,string firstName, string lastName, DateTime BirthDate, string phone, string address, string email, string imagePath)
+        {
+            int rowsAffected = -1;
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            {
+                string query = @"Update  People  
+                            set FirstName = @FirstName,
+                                LastName = @LastName, 
+                                BirthDate = @BirthDate,
+                                Address = @Address,  
+                                Phone = @Phone,
+                                Email = @Email, 
+                                ImagePath =@ImagePath
+                                where PersonID = @PersonID";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@PersonID", personID);
+                    cmd.Parameters.AddWithValue("@FirstName", firstName);
+                    cmd.Parameters.AddWithValue("@LastName", lastName);
+                    cmd.Parameters.AddWithValue("@BirthDate", BirthDate.ToShortDateString());
+                    cmd.Parameters.AddWithValue("@Phone", phone);
+
+
+                    if (!string.IsNullOrEmpty(address))
+                        cmd.Parameters.AddWithValue("@Address", address);
+                    else
+                        cmd.Parameters.AddWithValue("@Address", System.DBNull.Value);
+
+                    if (!string.IsNullOrEmpty(email))
+                        cmd.Parameters.AddWithValue("@Email", email);
+                    else
+                        cmd.Parameters.AddWithValue("@Email", System.DBNull.Value);
+
+                    if (!string.IsNullOrEmpty(imagePath))
+                        cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+                    else
+                        cmd.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+
+                    try
+                    {
+
+                        connection.Open();
+
+                        rowsAffected = cmd.ExecuteNonQuery();
+
+
+
+                    }
+                    catch (Exception)
+                    {
+                        //Logging will be implemented later on
+                        Console.WriteLine("****An error occurred. Function: UpdatePerson****");
+                        return false;
+                    }
+                }
+            }
+
+            return (rowsAffected > 0);
         }
 
     }
