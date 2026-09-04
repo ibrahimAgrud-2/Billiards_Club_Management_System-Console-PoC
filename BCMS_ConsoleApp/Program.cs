@@ -27,16 +27,16 @@ namespace BCMS_ConsoleApp
             //Person DL ve BL Biraz uzun sürer ama diğerleri hep copy paster zaten
             //DeepSeak kullan.
 
-            Person p1 = Person.Find(1);
-
-            if (p1==null)
+      
+            if (Person.IsPersonExists(1))
             {
                 Console.WriteLine("Could not find person");
             }
             else
             {
-                Console.WriteLine($"Person Found. Person Name: {p1.Email}");
-    
+                Console.WriteLine($"Person Found");
+
+
 
             }
         }

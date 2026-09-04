@@ -101,6 +101,10 @@ namespace BCMS_Business.People
             }
         }
 
+        public static bool IsPersonExists(int personID)
+        {
+            return PersonDataAccess.IsPersonExists(personID);
+        }
 
     }
 }

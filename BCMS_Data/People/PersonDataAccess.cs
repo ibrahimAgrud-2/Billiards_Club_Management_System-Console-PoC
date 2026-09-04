@@ -3,6 +3,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Net;
+using System.Security.Policy;
 
 
 namespace BCMS_Data.People
@@ -30,7 +32,7 @@ namespace BCMS_Data.People
             }
             catch (Exception ex)
             {
-                //log message to event viewer
+                //Logging will be implemented later on
             }
             finally
             {
@@ -76,8 +78,38 @@ namespace BCMS_Data.People
                     }
                     catch (Exception)
                     {
-                        //Loging will impelement later on
+                        //Logging will be implemented later on
                         Console.WriteLine("****An error occurred while reading finding person****");
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool IsPersonExists(int personID)
+        {
+            bool isFound = false;
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
+            {
+                string query = "SELECT Found=1 FROM People WHERE PersonID = @PersonID";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@PersonID", personID);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        isFound = reader.HasRows;
+
+                    }
+                    catch (Exception)
+                    {
+                        //Logging will be implemented later on
+                        Console.WriteLine("****An error occurred. Funtion: IsPersonExists****");
                         return false;
                     }
                 }
