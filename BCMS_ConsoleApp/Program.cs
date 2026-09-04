@@ -1,47 +1,61 @@
-﻿using BCMS_Business;
-using BCMS_Business.People;
-using System;
-using System.Configuration;
-using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using System;
 
-namespace BCMS_ConsoleApp
+namespace testConsoleApp2
 {
-    internal class Program
+    public class Logger
     {
 
+        public delegate void LogAction(string message);
+
+        LogAction _LogAction;
+
+        public Logger(LogAction logAction)
+        {
+            _LogAction = logAction;
+        }
+
+        public void Log(string message)
+        {
+            //içeriğinden bağımsız ilgili log fonksiyonunu çalıştırır.
+            _LogAction(message);
+        }
 
 
 
+    }
 
 
+    internal class Program
+    {
+        public static void LogToScreen(string message)
+        {
+            //ekrana basmak için ilgil kod
+            Console.WriteLine(message);
+        }
 
+        public static void LogToTextFile(string message)
+        {
+            //dosyaya kayıt için ilgil kod
+            Console.WriteLine(message);
+
+        }
+        public static void LogToDatabase(string message)
+        {
+            //DB'ye kayıt için ilgil kod
+            Console.WriteLine(message);
+
+        }
 
         static void Main(string[] args)
         {
-            //Layer layer adım adım gidelim.
-            //Person DL ve BL Biraz uzun sürer ama diğerleri hep copy paster zaten
-            //DeepSeak kullan.
+            //delegate listesine LogToScreen fonk ekliyoruz. 
+            //bunu programda 50 yerde kullandığımızı düşünelim ve artık ekrana 
+            //değil de DB'e log yapmak istediğimde 50 yerde değil sadece bu satırda
+            //LogToDatabase diyebilirdim
+            Logger log = new Logger(LogToScreen);
 
-
-            Person p1 = Person.Find(4);
-            p1.FirstName = "ismail";
-            p1.LastName = "Agr";
-            p1.Email = "ismail@gmail";
-            p1.BirthDate = DateTime.Today;
-            p1.Address = "ist";
-            p1.ImagePath = "C";
-            p1.Phone = "0531231123";
-
-            if (p1.DeletePerson())
-            {
-                Console.WriteLine("Person Deleted Successfully");
-            }
+            //sınıftaki Log fonksiyonu messagı alıyor ve delegate listesindeki fonksiyonu çağırıyor. Listede hangi fonksyionu olduğundan bağımsız olarak. Sadece delegate fonksiyonunu çağırıyor
+            log.Log("This is the log message");
 
 
         }

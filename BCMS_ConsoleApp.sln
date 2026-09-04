@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCMS_Data", "BCMS_Data\BCMS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCMS_Business", "BCMS_Business\BCMS_Business.csproj", "{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
