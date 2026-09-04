@@ -12,6 +12,11 @@ namespace BCMS_Data.People
 {
     public class PersonDataAccess
     {
+
+        /// <summary>
+        /// DB'de people tablosundaki tüm tabloyu olduğu gibi alır
+        /// </summary>
+        /// <returns>People data table</returns>
         public static DataTable GetPeople()
         {
             DataTable dt = new DataTable();
@@ -45,6 +50,10 @@ namespace BCMS_Data.People
         }
 
 
+        /// <summary>
+        /// Eğer kişiyi bulursa her bir parametreye kişini verisini yükler.
+        /// </summary>
+        /// <returns>Kişi varsa true, yoksa false</returns>
         public static bool Find(int personID, ref string firstName, ref string lastName, ref DateTime dateOfBirth, ref string phone, ref string address, ref string email, ref string imagePath)
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
@@ -88,6 +97,11 @@ namespace BCMS_Data.People
             return false;
         }
 
+        /// <summary>
+        /// kişisini olup olmadığını kontrol eder
+        /// </summary>
+        /// <param name="personID"></param>
+        /// <returns>Eğer kişi DB'de varsa true, yoksa false döner</returns>
         public static bool IsPersonExists(int personID)
         {
             bool isFound = false;
@@ -185,6 +199,10 @@ namespace BCMS_Data.People
             return personID;
         }
 
+        /// <summary>
+        /// ID ile person tüm alanları günceller.
+        /// </summary>
+        /// <returns>Eğer update yaparken sorun çıkmazsa true</returns>
         public static bool UpdatePerson(int personID,string firstName, string lastName, DateTime BirthDate, string phone, string address, string email, string imagePath)
         {
             int rowsAffected = -1;
@@ -247,7 +265,11 @@ namespace BCMS_Data.People
             return (rowsAffected > 0);
         }
 
-
+        /// <summary>
+        /// ID'sini verdiğini kişiyi siler.
+        /// </summary>
+        /// <param name="personID">Silinecek kişinin ID'si</param>
+        /// <returns></returns>
         public static bool DeletePerson(int personID)
         {
             int rowsAffected = -1;
