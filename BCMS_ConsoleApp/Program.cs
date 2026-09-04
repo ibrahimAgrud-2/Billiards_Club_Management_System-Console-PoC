@@ -21,6 +21,7 @@ namespace BCMS_ConsoleApp
 
 
 
+
         static void Main(string[] args)
         {
             //Layer layer adım adım gidelim.
@@ -35,7 +36,7 @@ namespace BCMS_ConsoleApp
             else
             {
                 Console.WriteLine($"Person Found");
-
+               
 
 
             }

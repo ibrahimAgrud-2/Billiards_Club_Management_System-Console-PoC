@@ -101,6 +101,14 @@ namespace BCMS_Business.People
             }
         }
 
+
+
+
+        /// <summary>
+        /// Person ID person'un var olup olmadığını kontrl eder. Obje döndürmez. Kişi varsa true yoksa falsa döner.
+        /// </summary>
+        /// <param name="a">Person ID to Check</param>
+        /// <returns>Return true or false</returns>
         public static bool IsPersonExists(int personID)
         {
             return PersonDataAccess.IsPersonExists(personID);
