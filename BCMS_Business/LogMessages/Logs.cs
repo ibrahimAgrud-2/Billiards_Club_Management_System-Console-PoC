@@ -7,9 +7,11 @@ namespace BCMS_Business.LogMessages
 {
     public class Logs
     {
+
         public static void LogToDatabase(EventLogEntryType ErrorType, string message, string prefix = "", Exception ex = null)
         {
-            DBLog.LogToDatabase(ErrorType,message,prefix,ex);
+            //TODO: user Eklendiğinde Sistemde o ank user ID'sini vermelisin.
+            DBLog.LogToDatabase(ErrorType,message, 1, prefix,ex);
         }
     }
 }

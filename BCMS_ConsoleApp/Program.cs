@@ -14,7 +14,7 @@ namespace BCMS_ConsoleApp
             //Log'ın nereye yazılacağını belirliyoruz.
             Logger.SetLogAction(CommonTools.LogToConsole);
             //Logger.SetLogAction(CommonTools.LogToWindowsEventView);
-            //Logger.SetLogAction(BCMS_Business.Logs.Logs.LogToDatabase);
+            Logger.SetLogAction(BCMS_Business.LogMessages.Logs.LogToDatabase);
 
 
 

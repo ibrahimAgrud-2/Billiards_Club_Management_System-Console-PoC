@@ -20,7 +20,7 @@ namespace BCMS_Data.LogMessages
         /// <param name="message">Erro mesajı</param>
         /// <param name="prefix">Error'un hangi katmanda olduğunu belirtmel için. Ör: BCMS.DataAccess</param>
         /// <param name="ex">Exeption mesajı</param>
-        public static void LogToDatabase(EventLogEntryType ErrorType, string message, string prefix = "", Exception ex = null)
+        public static void LogToDatabase(EventLogEntryType ErrorType, string message,int createdByUserID, string prefix = "", Exception ex = null)
         {
             string sourceName = (prefix == "") ? "BCMS" : "BCMS." + prefix;
 
@@ -33,9 +33,9 @@ namespace BCMS_Data.LogMessages
             }
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = @"INSERT INTO Logs (LogMessage,LogDate,
+                string query = @"INSERT INTO Logs (CreatedByUserID,LogMessage,LogDate,
                                                    LogDetails)
-                             VALUES (@LogMessage,@LogDate,
+                             VALUES (@CreatedByUserID,@LogMessage,@LogDate,
                                      @LogDetails);
                              SELECT SCOPE_IDENTITY();";
 
@@ -43,6 +43,9 @@ namespace BCMS_Data.LogMessages
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@LogMessage", message);
+                    
+                   
+                    cmd.Parameters.AddWithValue("@CreatedByUserID", createdByUserID);
                     cmd.Parameters.AddWithValue("@LogDate", DateTime.Now);
                     cmd.Parameters.AddWithValue("@LogDetails", detailedMessage);
 
