@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BCMS_Data.Logs
+namespace BCMS_Data.LogMessages
 {
     public class DBLog
     {
