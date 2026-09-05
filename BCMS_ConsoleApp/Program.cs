@@ -17,17 +17,15 @@ namespace BCMS_ConsoleApp
             //Logger.SetLogAction(CommonTools.LogToWindowsEventView);
             //Logger.SetLogAction(BCMS_Business.LogMessages.Logs.LogToDatabase);
 
-            Person p = new Person();
-            p.FirstName = "ibo";
-            p.LastName = "agr";
-            p.Address = "ist";
-            p.ImagePath = "C";
-            p.BirthDate = DateTime.Now.AddYears(-19);
-            p.Email = "ib@gma";
-            p.Phone = "53451231";
+            //Person p = new Person();
+            //p.FirstName = "ibo";
+            //p.LastName = "agr";
+            //p.Address = "ist";
+            //p.ImagePath = "C";
+            //p.BirthDate = DateTime.Now.AddYears(-19);
+            //p.Email = "ib@gma";
+            //p.Phone = "53451231";
 
-
-            p.Save();
 
 
         }
