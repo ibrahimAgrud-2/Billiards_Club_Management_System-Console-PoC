@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}|Common\\Common.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\common\\hashingtext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}|Common\\Common.csproj|solutionrelative:common\\hashingtext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_business\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|solutionrelative:bcms_business\\users\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\users\\userdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|solutionrelative:bcms_data\\users\\userdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_business\\people\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|solutionrelative:bcms_business\\people\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\people\\persondataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,6 +17,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|solutionrelative:bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\users\\userdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|solutionrelative:bcms_data\\users\\userdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}|Common\\Common.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\common\\hashing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}|Common\\Common.csproj|solutionrelative:common\\hashing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,12 +51,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HashingText.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\Common\\HashingText.cs",
-              "RelativeDocumentMoniker": "Common\\HashingText.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\Common\\HashingText.cs",
-              "RelativeToolTip": "Common\\HashingText.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Users\\User.cs",
+              "RelativeDocumentMoniker": "BCMS_Business\\Users\\User.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Users\\User.cs",
+              "RelativeToolTip": "BCMS_Business\\Users\\User.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAUwHsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T12:50:00.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\People\\Person.cs",
+              "RelativeDocumentMoniker": "BCMS_Business\\People\\Person.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\People\\Person.cs",
+              "RelativeToolTip": "BCMS_Business\\People\\Person.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAuwO4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T12:48:27.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Hashing.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\Common\\Hashing.cs",
+              "RelativeDocumentMoniker": "Common\\Hashing.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\Common\\Hashing.cs",
+              "RelativeToolTip": "Common\\Hashing.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwBIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-05T12:42:03.79Z",
               "EditorCaption": ""
@@ -68,13 +102,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "UserDataAccess.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Users\\UserDataAccess.cs",
               "RelativeDocumentMoniker": "BCMS_Data\\Users\\UserDataAccess.cs",
               "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Users\\UserDataAccess.cs",
               "RelativeToolTip": "BCMS_Data\\Users\\UserDataAccess.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAQwK4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAwK4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-05T12:26:02.648Z",
               "EditorCaption": ""
