@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Attributes.cs" />
     <Compile Include="CommonTools.cs" />
+    <Compile Include="HashingText.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

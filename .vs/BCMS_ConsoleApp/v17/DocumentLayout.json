@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}|Common\\Common.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\common\\hashingtext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7220B40-21E9-4A0C-B6F9-F3AD7BB7BD7B}|Common\\Common.csproj|solutionrelative:common\\hashingtext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\users\\userdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|solutionrelative:bcms_data\\users\\userdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +42,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "HashingText.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\Common\\HashingText.cs",
+              "RelativeDocumentMoniker": "Common\\HashingText.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\Common\\HashingText.cs",
+              "RelativeToolTip": "Common\\HashingText.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T12:42:03.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PersonDataAccess.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\People\\PersonDataAccess.cs",
               "RelativeDocumentMoniker": "BCMS_Data\\People\\PersonDataAccess.cs",
@@ -51,20 +68,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UserDataAccess.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Users\\UserDataAccess.cs",
               "RelativeDocumentMoniker": "BCMS_Data\\Users\\UserDataAccess.cs",
               "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Users\\UserDataAccess.cs",
               "RelativeToolTip": "BCMS_Data\\Users\\UserDataAccess.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAQwP8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAQwK4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-05T12:26:02.648Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_ConsoleApp\\Program.cs",
               "RelativeDocumentMoniker": "BCMS_ConsoleApp\\Program.cs",
