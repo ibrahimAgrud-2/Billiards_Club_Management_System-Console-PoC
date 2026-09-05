@@ -1,11 +1,10 @@
 ﻿using System;
-using System.CodeDom;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Net;
 using Common;
+
+
 
 
 namespace BCMS_Data.People
@@ -38,7 +37,8 @@ namespace BCMS_Data.People
             }
             catch (Exception ex)
             {
-                //Logging will be implemented later on
+                Logger.Log(System.Diagnostics.EventLogEntryType.Warning, "An Error occurred while getting  person table list", "PersonDataAccess", ex);
+
             }
             finally
             {
@@ -86,10 +86,9 @@ namespace BCMS_Data.People
                             }
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        //Logging will be implemented later on
-                        Console.WriteLine("****An error occurred while reading finding person****");
+                        Logger.Log(System.Diagnostics.EventLogEntryType.Warning, "An Error occurred while finding person", "PersonDataAccess", ex);
                         return false;
                     }
                 }
@@ -121,10 +120,10 @@ namespace BCMS_Data.People
                         isFound = reader.HasRows;
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        //Logging will be implemented later on
-                        Console.WriteLine("****An error occurred. Funtion: IsPersonExists****");
+                        Logger.Log(System.Diagnostics.EventLogEntryType.Warning, "An Error occurred while checking for person existence", "PersonDataAccess", ex);
+
                         return false;
                     }
                 }
@@ -187,10 +186,10 @@ namespace BCMS_Data.People
 
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        //Logging will be implemented later on
-                        Console.WriteLine("****An error occurred. Function: AddNewPerson****");
+                        Logger.Log(System.Diagnostics.EventLogEntryType.Warning, "An Error occurred while adding person", "PersonDataAccess", ex);
+
                         return -1;
                     }
                 }
@@ -253,10 +252,9 @@ namespace BCMS_Data.People
 
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        //Logging will be implemented later on
-                        Console.WriteLine("****An error occurred. Function: UpdatePerson****");
+                        Logger.Log(System.Diagnostics.EventLogEntryType.Warning, "An Error occurred while updating person", "PersonDataAccess", ex);
                         return false;
                     }
                 }
@@ -294,11 +292,11 @@ namespace BCMS_Data.People
 
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
 
-                        //Console.WriteLine("****An error occurred. Function: DeletePerson****");
-                        CommonTools.log.Log(EventLogEntryType.Information, "Test");
+                        Logger.Log(System.Diagnostics.EventLogEntryType.Warning,"An Error occurred while deleting person","PersonDataAccess",ex);
+                     
 
                         return false;
                     }
@@ -308,7 +306,6 @@ namespace BCMS_Data.People
             return (rowsAffected > 0);
 
         }
-
 
     }
 }

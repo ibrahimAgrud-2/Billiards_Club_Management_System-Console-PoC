@@ -1,65 +1,25 @@
-﻿using BCMS_Business.Logs;
+﻿
 using System;
-using System.Data;
+using System.Diagnostics;
+using BCMS_Business;
+using Common;
 
 namespace BCMS_ConsoleApp
 {
-    public class Logger
+    
+    class program
     {
-
-        public delegate void LogAction(string message);
-
-        LogAction _LogAction;
-
-        public Logger(LogAction logAction)
+        static void Main()
         {
-            _LogAction = logAction;
-        }
-
-        public void Log(string message)
-        {
-            //içeriğinden bağımsız ilgili log fonksiyonunu çalıştırır.
-            _LogAction(message);
-        }
+            //Log'ın nereye yazılacağını belirliyoruz.
+            Logger.SetLogAction(CommonTools.LogToConsole);
+            //Logger.SetLogAction(CommonTools.LogToWindowsEventView);
+            //Logger.SetLogAction(BCMS_Business.Logs.Logs.LogToDatabase);
 
 
 
-    }
-
-
-    internal class Program
-    {
-        public static void LogToScreen(string message)
-        {
-            //ekrana basmak için ilgil kod
-            Console.WriteLine(message);
-        }
-
-        public static void LogToTextFile(string message)
-        {
-            //dosyaya kayıt için ilgil kod
-            Console.WriteLine(message);
-
-        }
-        public static void LogToDatabase(string message)
-        {
-            //DB'ye kayıt için ilgil kod
-            Console.WriteLine(message);
 
         }
 
-        static void Main(string[] args)
-        {
-            //delegate listesine LogToScreen fonk ekliyoruz. 
-            //bunu programda 50 yerde kullandığımızı düşünelim ve artık ekrana 
-            //değil de DB'e log yapmak istediğimde 50 yerde değil sadece bu satırda
-            //LogToDatabase diyebilirdim
-            //Logger log = new Logger(LogToScreen);
-
-            //sınıftaki Log fonksiyonu messagı alıyor ve delegate listesindeki fonksiyonu çağırıyor. Listede hangi fonksyionu olduğundan bağımsız olarak. Sadece delegate fonksiyonunu çağırıyor
-            //log.Log("This is the log message");
-
-       
-        }
     }
 }

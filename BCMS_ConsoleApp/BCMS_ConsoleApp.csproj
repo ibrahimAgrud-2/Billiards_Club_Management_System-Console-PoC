@@ -55,6 +55,10 @@
       <Project>{b119ebfd-4b62-4da6-8d1b-02e9bfe966c4}</Project>
       <Name>BCMS_Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{b7220b40-21e9-4a0c-b6f9-f3ad7bb7bd7b}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
