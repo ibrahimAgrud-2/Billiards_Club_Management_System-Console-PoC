@@ -7,11 +7,20 @@ namespace BCMS_Business.People
 {
     public class Person
     {
-        public int PersonID { get; set; }
+
+        public int PersonID { get; private set; }
+
+        [Common.Attributes.NonNullableVariableAttribute]
         public string FirstName { get; set; }
+
+        [Common.Attributes.NonNullableVariableAttribute]
         public string LastName { get; set; }
         public string FullName { get { return FirstName + " " + LastName; } }
+
+        [Common.Attributes.NonNullableVariableAttribute]
         public DateTime BirthDate { get; set; }
+
+        [Common.Attributes.NonNullableVariableAttribute]
         public string Phone { get; set; }
 
   
@@ -29,7 +38,7 @@ namespace BCMS_Business.People
         public string Email { get; set; }
 
         public enum enMode { AddNew = 0, Update = 1 };
-        public enMode Mode = enMode.AddNew;
+        public enMode Mode { get; private set; } = enMode.AddNew;
 
 
         /// <summary>
@@ -43,7 +52,7 @@ namespace BCMS_Business.People
         /// verilerle bir Person oluşturabilir ve sistem var olmayan bir kişi
         /// üzerinden işlem yapabilirdi
         /// </remarks>
-        public Person(int personID, string firstName,string lastName,  DateTime birthDate,  string phone,     string address, string imagePath,string email)
+        private Person(int personID, string firstName,string lastName,  DateTime birthDate,  string phone,     string address, string imagePath,string email)
         {
             PersonID = personID;
             FirstName = firstName;
@@ -109,9 +118,6 @@ namespace BCMS_Business.People
             }
         }
 
-
-
-
         /// <summary>
         /// Person ID person'un var olup olmadığını kontrl eder. Obje döndürmez. Kişi varsa true yoksa falsa döner.
         /// </summary>
@@ -128,7 +134,10 @@ namespace BCMS_Business.People
         /// <returns>Geriye Otomatik olarak SSMS tarafından verilen ID'i dönderir</returns>
         private bool _AddNewPerson()
         {
-            //call DataAccess Layer 
+            if(!IsValid(this))
+            {
+                return false;
+            }
 
             this.PersonID = PersonDataAccess.AddNewPerson(this.FirstName, this.LastName, this.BirthDate, this.Phone, this.Address, this.Email, this.ImagePath);
 
@@ -141,6 +150,10 @@ namespace BCMS_Business.People
         /// <returns>Eğer update işlemi sorunsuz olduysa true</returns>
         private bool _UpdatePerson()
         {
+            if(!IsValid(this))
+            {
+                return false;
+            }
             return PersonDataAccess.UpdatePerson(this.PersonID,this.FirstName, this.LastName, this.BirthDate, this.Phone, this.Address, this.Email, this.ImagePath);
         }
 
@@ -153,6 +166,37 @@ namespace BCMS_Business.People
             return PersonDataAccess.DeletePerson(this.PersonID);
         }
 
+        /// <summary>
+        /// Yazdığımız Attirbute kendi kendini kontrol edemez. Bu yüzden bir custom attribute yazdığımızda
+        /// Onu okuyabilecek olan kodu da yazmakıyız. Mesela NonNullableVariableAttribute attribute'ını okuyabilen 
+        /// bir fonksiypn yazarak o attribute'u anlamlı hale getirdik
+        /// </summary>
+        /// <param name="person">Kontrol edilecek obje</param>
+        /// <returns>Eğer not nullable tüm alanlar null değilse true döner</returns>
+        private bool IsValid(Person person)
+        {
+
+            Type type = typeof(Person);
+
+            foreach (var prop in type.GetProperties())
+            {
+
+                if (Attribute.IsDefined(prop, typeof(Common.Attributes.NonNullableVariableAttribute)))
+                {
+                    var rangeAttribute = (Common.Attributes.NonNullableVariableAttribute)Attribute.GetCustomAttribute(prop, typeof(Common.Attributes.NonNullableVariableAttribute));
+
+                    string value = prop.GetValue(person)?.ToString();
+
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        Common.Logger.Log(System.Diagnostics.EventLogEntryType.Error, $"Validation Failed for property '{prop.Name}' ", "PersonDataAccess");
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        
         /// <summary>
         /// Update ve Add işlemleri bu fonksiyondan çağrılır. Mode eğer add ise o obje için add fonksiyonun çağırır. Değilse  o obje için update fonksiyonunu çağırır.
         /// </summary>

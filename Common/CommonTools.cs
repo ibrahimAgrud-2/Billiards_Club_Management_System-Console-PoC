@@ -58,7 +58,7 @@ namespace Common
                 detailedMessage += $"\nException: {ex.GetType().Name} - {ex.Message}" +
             $"\nStackTrace:\n{ex.StackTrace}";
             }
-            Console.WriteLine(" *** An Error Occurred. " + detailedMessage + " ***");
+            Console.WriteLine($"*** An Error Occurred. {detailedMessage}. ➡️ {prefix} ***");
 
             //if (OnErrorLogged != null)
             //{
