@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using Common;
+using System.Net;
+using System.Security.Policy;
 
 
 
@@ -19,34 +21,33 @@ namespace BCMS_Data.People
         public static DataTable GetPeople()
         {
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
-            //Query'deki field sırası önemli. Çünkü bu sırayla dgv'de gözükecek.
-            string sqlQuery = @"select * from People";
-       
-            SqlCommand cmd = new SqlCommand(sqlQuery, connection);
-            try
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                connection.Open();
-                SqlDataReader read = cmd.ExecuteReader();
+                string query = "select * from People ";
 
-                if (read.HasRows)
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    dt.Load(read);
+                  
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader read = cmd.ExecuteReader())
+                        {
+                            if (read.HasRows)
+                            {
+                                dt.Load(read);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Log(System.Diagnostics.EventLogEntryType.Warning, "An Error occurred while finding person", "PersonDataAccess", ex);
+                        
+                    }
                 }
-                read.Close();
             }
-            catch (Exception ex)
-            {
-                Logger.Log(System.Diagnostics.EventLogEntryType.Warning, "An Error occurred while getting  person table list", "PersonDataAccess", ex);
-
-            }
-            finally
-            {
-                connection.Close();
-            }
-
             return dt;
-
         }
 
 
@@ -115,9 +116,12 @@ namespace BCMS_Data.People
                     try
                     {
                         connection.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        isFound = reader.HasRows;
+                       
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+                        }
+                          
 
                     }
                     catch (Exception ex)
@@ -128,7 +132,7 @@ namespace BCMS_Data.People
                     }
                 }
             }
-            return false;
+            return isFound;
         }
 
          
@@ -306,6 +310,7 @@ namespace BCMS_Data.People
             return (rowsAffected > 0);
 
         }
+
 
     }
 }
