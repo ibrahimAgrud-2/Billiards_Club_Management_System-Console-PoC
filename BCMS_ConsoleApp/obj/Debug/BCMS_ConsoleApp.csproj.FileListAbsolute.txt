@@ -11,3 +11,5 @@ C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\BCMS_Data.
 C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\BCMS_Business.pdb
 C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\BCMS_Data.pdb
 C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\obj\Debug\BCMS_Con.E6D00A35.Up2Date
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\Common.dll
+C:\Users\ibrah\source\repos\BCMS_ConsoleApp\BCMS_ConsoleApp\bin\Debug\Common.pdb

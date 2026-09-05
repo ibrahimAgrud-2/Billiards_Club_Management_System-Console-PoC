@@ -1,6 +1,8 @@
-﻿using System;
+﻿using BCMS_Business.Logs;
+using System;
+using System.Data;
 
-namespace testConsoleApp2
+namespace BCMS_ConsoleApp
 {
     public class Logger
     {
@@ -52,12 +54,12 @@ namespace testConsoleApp2
             //bunu programda 50 yerde kullandığımızı düşünelim ve artık ekrana 
             //değil de DB'e log yapmak istediğimde 50 yerde değil sadece bu satırda
             //LogToDatabase diyebilirdim
-            Logger log = new Logger(LogToScreen);
+            //Logger log = new Logger(LogToScreen);
 
             //sınıftaki Log fonksiyonu messagı alıyor ve delegate listesindeki fonksiyonu çağırıyor. Listede hangi fonksyionu olduğundan bağımsız olarak. Sadece delegate fonksiyonunu çağırıyor
-            log.Log("This is the log message");
+            //log.Log("This is the log message");
 
-
+       
         }
     }
 }

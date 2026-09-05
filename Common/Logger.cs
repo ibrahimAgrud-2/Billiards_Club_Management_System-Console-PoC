@@ -25,7 +25,7 @@ namespace Common
         private static LogAction _LogAction;
        
         /// <summary>
-        /// Bu const sınıftan bir obje oluşturduğumuzda illa ilgili fonskiyonu bizden parameter olarak ister
+        /// Bu const, sınıftan bir obje oluşturduğumuzda illa ilgili fonskiyonu bizden parameter olarak ister
         /// Yani Log işlemini hangi fonk ile yapacaksak onu önceden bilmesi gerekecek
         /// </summary>
         /// <param name="logAction"></param>
@@ -33,116 +33,14 @@ namespace Common
         {
             _LogAction = logAction;
         }
-
+       
         /// <summary>
         /// Bu fonksiyon aracı fonksiyon. İşi hangi fonk abone ise onu delegate ile çağıracak.
         /// </summary>
-        public static void Log(EventLogEntryType ErrorType, string message, string prefix = "", Exception ex = null)
+        public  void Log(EventLogEntryType ErrorType, string message, string prefix = "", Exception ex = null)
         {
             //hangi fonk (toDatabase, toConsole, toEventView ) abone ise onu sadece çağıracak
             _LogAction?.Invoke(ErrorType, message, prefix, ex);
         }
-
-
-        //Log fonksiyonları
-        public static void LogToWindowsEventView(EventLogEntryType ErrorType,string message , string prefix = "",Exception ex=null)
-        {
-        string sourceName = (prefix == "") ? "BCMS" : "BCMS." + prefix;
-
-
-            if (!EventLog.SourceExists(sourceName))
-            {
-                EventLog.CreateEventSource(sourceName, "Application");
-            }
-
-            string detailedMessage= $"Message  : {message}";
-
-            if(ex!=null)
-            {
-                detailedMessage += $"\nException: {ex.GetType().Name} - {ex.Message}" +
-            $"\nStackTrace:\n{ex.StackTrace}";
-            }
-            EventLog.WriteEntry(sourceName, detailedMessage, ErrorType);
-        
-        }
-        public static void LogToConsole(EventLogEntryType ErrorType, string message, string prefix = "", Exception ex = null)
-        {
-            string sourceName = (prefix == "") ? "BCMS" : "BCMS." + prefix;
-   
-                string detailedMessage = $"Message  : {message}";
-
-                if (ex != null)
-                {
-                    detailedMessage += $"\nException: {ex.GetType().Name} - {ex.Message}" +
-                $"\nStackTrace:\n{ex.StackTrace}";
-                }
-               Console.WriteLine(" *** An Error Occurred. " +detailedMessage +" ***");
-            
-            //if (OnErrorLogged != null)
-            //{
-            //    OnErrorLogged(ex.Message);
-            //}
-
-        }
-
-        public static void LogToDatabase(EventLogEntryType ErrorType, string message, string prefix = "", Exception ex = null)
-        {
-            string sourceName = (prefix == "") ? "BCMS" : "BCMS." + prefix;
-
-            string detailedMessage = $"Message  : {message}";
-
-            if (ex != null)
-            {
-                detailedMessage += $"\nException: {ex.GetType().Name} - {ex.Message}" +
-            $"\nStackTrace:\n{ex.StackTrace}";
-            }
-            Console.WriteLine(" *** An Error Occurred. " + detailedMessage + " ***");
-
-
-
-            int personID = -1;
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
-            {
-                string query = @"INSERT INTO Logs (@LogMessage,@LogDate,@LogDetails);
-                             SELECT SCOPE_IDENTITY();";
-
-
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@LogMessage", message);
-                    cmd.Parameters.AddWithValue("@LogDate", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@LogDetails", detailedMessage);
-
-
-
-                    try
-                    {
-                        connection.Open();
-
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                        {
-                            personID = insertedID;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        //Logging will be implemented later on
-                        Console.WriteLine("****An error occurred. Function: LogToDatabase****");
-                        
-                    }
-                }
-            }
-
-           
-
-            //if (OnErrorLogged != null)
-            //{
-            //    OnErrorLogged(ex.Message);
-            //}
-
-        }
-
     }
 }

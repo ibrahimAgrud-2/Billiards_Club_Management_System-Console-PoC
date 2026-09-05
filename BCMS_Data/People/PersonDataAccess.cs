@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Net;
-using System.Security.Policy;
+using Common;
 
 
 namespace BCMS_Data.People
@@ -296,8 +296,10 @@ namespace BCMS_Data.People
                     }
                     catch (Exception)
                     {
-                        //Logging will be implemented later on
-                        Console.WriteLine("****An error occurred. Function: DeletePerson****");
+
+                        //Console.WriteLine("****An error occurred. Function: DeletePerson****");
+                        CommonTools.log.Log(EventLogEntryType.Information, "Test");
+
                         return false;
                     }
                 }
@@ -306,5 +308,7 @@ namespace BCMS_Data.People
             return (rowsAffected > 0);
 
         }
+
+
     }
 }
