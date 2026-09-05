@@ -22,8 +22,9 @@ namespace BCMS_ConsoleApp
             p.LastName = "agr";
             p.Address = "ist";
             p.ImagePath = "C";
-            p.BirthDate = DateTime.Now;
+            p.BirthDate = DateTime.Now.AddYears(-19);
             p.Email = "ib@gma";
+            p.Phone = "53451231";
 
 
             p.Save();

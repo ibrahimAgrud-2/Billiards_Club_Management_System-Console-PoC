@@ -8,19 +8,22 @@ namespace BCMS_Business.People
     public class Person
     {
 
+        /// <summary>
+        /// ID Database tarafından verildiği için dışardan set edilememeli.
+        /// </summary>
         public int PersonID { get; private set; }
 
-        [Common.Attributes.NonNullableVariableAttribute]
+        [Common.Attributes.NonNullableVariable]
         public string FirstName { get; set; }
 
-        [Common.Attributes.NonNullableVariableAttribute]
+        [Common.Attributes.NonNullableVariable]
         public string LastName { get; set; }
         public string FullName { get { return FirstName + " " + LastName; } }
 
-        [Common.Attributes.NonNullableVariableAttribute]
+        [Common.Attributes.DateVariable]
         public DateTime BirthDate { get; set; }
 
-        [Common.Attributes.NonNullableVariableAttribute]
+        [Common.Attributes.NonNullableVariable]
         public string Phone { get; set; }
 
   
@@ -134,7 +137,7 @@ namespace BCMS_Business.People
         /// <returns>Geriye Otomatik olarak SSMS tarafından verilen ID'i dönderir</returns>
         private bool _AddNewPerson()
         {
-            if(!IsValid(this))
+            if(!IsValid())
             {
                 return false;
             }
@@ -150,7 +153,7 @@ namespace BCMS_Business.People
         /// <returns>Eğer update işlemi sorunsuz olduysa true</returns>
         private bool _UpdatePerson()
         {
-            if(!IsValid(this))
+            if(!IsValid())
             {
                 return false;
             }
@@ -173,25 +176,35 @@ namespace BCMS_Business.People
         /// </summary>
         /// <param name="person">Kontrol edilecek obje</param>
         /// <returns>Eğer not nullable tüm alanlar null değilse true döner</returns>
-        private bool IsValid(Person person)
+        private bool IsValid()
         {
-
             Type type = typeof(Person);
 
             foreach (var prop in type.GetProperties())
             {
-
                 if (Attribute.IsDefined(prop, typeof(Common.Attributes.NonNullableVariableAttribute)))
                 {
-                    var rangeAttribute = (Common.Attributes.NonNullableVariableAttribute)Attribute.GetCustomAttribute(prop, typeof(Common.Attributes.NonNullableVariableAttribute));
-
-                    string value = prop.GetValue(person)?.ToString();
+       
+                    string value = prop.GetValue(this)?.ToString();
 
                     if (string.IsNullOrEmpty(value))
                     {
-                        Common.Logger.Log(System.Diagnostics.EventLogEntryType.Error, $"Validation Failed for property '{prop.Name}' ", "PersonDataAccess");
+                        //prop.name=o an kontrol ettiğimiz prop adı. Kişi adı değil
+                        Console.WriteLine($"Validation Failed for property '{prop.Name}'");
                         return false;
                     }
+                }
+                if (Attribute.IsDefined(prop, typeof(Common.Attributes.DateVariableAttribute)))
+                {
+                    var DateAttribute = (Common.Attributes.DateVariableAttribute)Attribute.GetCustomAttribute(prop, typeof(Common.Attributes.DateVariableAttribute));
+
+                    DateTime birth = Convert.ToDateTime(prop.GetValue(this));
+                   
+                        if (birth < DateAttribute.MinDate || birth > DateAttribute.MaxDate)
+                        {
+                            Console.WriteLine($"Validation Failed for property '{prop.Name}'. Minimum date is  {DateAttribute.MinDate.ToShortDateString()} and maximum date is {DateAttribute.MaxDate.ToShortDateString()}");
+                            return false;
+                        }
                 }
             }
             return true;
