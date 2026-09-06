@@ -4,6 +4,7 @@ using System.Diagnostics;
 using BCMS_Business;
 using BCMS_Business.People;
 using BCMS_Business.Products;
+using BCMS_Business.Sessions;
 using BCMS_Business.Staff;
 using BCMS_Business.Tables;
 using BCMS_Business.Users;
@@ -67,6 +68,9 @@ namespace BCMS_ConsoleApp
             //t.TableType = Table.enTableType.Caroom;
             //t.PriceID = 1;
             //t.Save();
+
+
+
 
         }
 

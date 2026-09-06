@@ -8,6 +8,8 @@ namespace BCMS_Data.Sessions
 {
     public class SessionDataAccess
     {
+       
+        
         /// <summary>
         /// DB'deki Sessions tablosundaki tüm kayıtları alır.
         /// </summary>
@@ -57,14 +59,7 @@ namespace BCMS_Data.Sessions
         /// <returns>
         /// Session varsa true, yoksa false döner.
         /// </returns>
-        public static bool Find(
-            int sessionID,
-            ref int createdByStaffID,
-            ref int tableID,
-            ref DateTime sessionDate,
-            ref DateTime sessionStartTime,
-            ref DateTime sessionEndTime,
-            ref short sessionStatus)
+        public static bool Find( int sessionID,    ref int createdByStaffID,    ref int tableID,   ref DateTime sessionDate, ref DateTime sessionStartTime,     ref DateTime sessionEndTime,     ref byte sessionStatus)
         {
             using (SqlConnection connection =
                 new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
@@ -100,7 +95,7 @@ namespace BCMS_Data.Sessions
                                     Convert.ToDateTime(read["SessionEndTime"]);
 
                                 sessionStatus =
-                                    Convert.ToInt16(read["SessionStatus"]);
+                                    Convert.ToByte(read["SessionStatus"]);
 
                                 return true;
                             }
@@ -183,7 +178,7 @@ namespace BCMS_Data.Sessions
             DateTime sessionDate,
             DateTime sessionStartTime,
             DateTime sessionEndTime,
-            short sessionStatus)
+            byte sessionStatus)
         {
             int sessionID = -1;
 
@@ -282,7 +277,7 @@ namespace BCMS_Data.Sessions
             DateTime sessionDate,
             DateTime sessionStartTime,
             DateTime sessionEndTime,
-            short sessionStatus)
+            byte sessionStatus)
         {
             int rowsAffected = -1;
 
