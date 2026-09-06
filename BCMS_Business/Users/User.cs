@@ -12,16 +12,16 @@ namespace BCMS_Business.Users
         /// </summary>
         public int ID { get; private set; }
 
-        [Common.Attributes.NonNullableVariable]
+        [Common.Attributes.RequiredVariable]
         public int PersonID { get; set; }
 
-        [Common.Attributes.NonNullableVariable]
+        [Common.Attributes.RequiredVariable]
         public string UserName { get; set; }
 
-        [Common.Attributes.NonNullableVariable]
+        [Common.Attributes.RequiredVariable]
         public string Password { get; set; }
 
-        [Common.Attributes.NonNullableVariable]
+        [Common.Attributes.RequiredVariable]
         public bool IsActive { get; set; }
 
 
@@ -145,7 +145,7 @@ namespace BCMS_Business.Users
                 return false;
             }
 
-            return UserDataAccess.UpdateUser(this.ID, this.PersonID, this.UserName, this.Password, this.IsActive);
+            return UserDataAccess.UpdateUser(this.ID, this.PersonID, this.UserName, EncryptPassword(), this.IsActive);
         }
 
 
@@ -170,7 +170,7 @@ namespace BCMS_Business.Users
 
             foreach (var prop in type.GetProperties())
             {
-                if (Attribute.IsDefined(prop, typeof(Common.Attributes.NonNullableVariableAttribute)))
+                if (Attribute.IsDefined(prop, typeof(Common.Attributes.RequiredVariableAttribute)))
                 {
                     string value = prop.GetValue(this)?.ToString();
 

@@ -13,17 +13,17 @@
             /// </summary>
             public int PersonID { get; private set; }
 
-            [Common.Attributes.NonNullableVariable]
+            [Common.Attributes.RequiredVariable]
             public string FirstName { get; set; }
 
-            [Common.Attributes.NonNullableVariable]
+            [Common.Attributes.RequiredVariable]
             public string LastName { get; set; }
             public string FullName { get { return FirstName + " " + LastName; } }
 
             [Common.Attributes.DateVariable]
             public DateTime BirthDate { get; set; }
 
-            [Common.Attributes.NonNullableVariable]
+            [Common.Attributes.RequiredVariable]
             public string Phone { get; set; }
 
   
@@ -171,7 +171,7 @@
 
             /// <summary>
             /// Yazdığımız Attirbute kendi kendini kontrol edemez. Bu yüzden bir custom attribute yazdığımızda
-            /// Onu okuyabilecek olan kodu da yazmakıyız. Mesela NonNullableVariableAttribute attribute'ını okuyabilen 
+            /// Onu okuyabilecek olan kodu da yazmakıyız. Mesela RequiredVariableAttribute attribute'ını okuyabilen 
             /// bir fonksiypn yazarak o attribute'u anlamlı hale getirdik
             /// </summary>
             /// <returns>Eğer not nullable tüm alanlar null değilse true döner</returns>
@@ -181,7 +181,7 @@
 
                 foreach (var prop in type.GetProperties())
                 {
-                    if (Attribute.IsDefined(prop, typeof(Common.Attributes.NonNullableVariableAttribute)))
+                    if (Attribute.IsDefined(prop, typeof(Common.Attributes.RequiredVariableAttribute)))
                     {
        
                         string value = prop.GetValue(this)?.ToString();

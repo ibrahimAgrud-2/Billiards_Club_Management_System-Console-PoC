@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using BCMS_Business;
 using BCMS_Business.People;
+using BCMS_Business.Users;
 using Common;
 
 namespace BCMS_ConsoleApp
@@ -25,6 +26,9 @@ namespace BCMS_ConsoleApp
             //p.BirthDate = DateTime.Now.AddYears(-19);
             //p.Email = "ib@gma";
             //p.Phone = "53451231";
+
+
+            User user = new User();
 
 
 

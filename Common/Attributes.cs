@@ -14,7 +14,7 @@ namespace Common
         /// Bu attribute null olmaması gereken proplar içindir
         /// </summary>
         [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-        public class NonNullableVariableAttribute:Attribute
+        public class RequiredVariableAttribute:Attribute
         {  
           
         }
