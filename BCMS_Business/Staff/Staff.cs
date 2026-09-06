@@ -19,7 +19,7 @@ namespace BCMS_Business.Staff
 
         public decimal Salary { get; set; }
 
-        [Common.Attributes.DateVariable]
+       
         public DateTime HireDate { get; set; }
 
         public int CreatedByUserID { get; set; }
@@ -128,15 +128,12 @@ namespace BCMS_Business.Staff
         /// <returns>Geriye otomatik olarak SSMS tarafından verilen ID'yi döndürür</returns>
         private bool _AddNewStaff()
         {
-            if (!IsValid())
-            {
-                return false;
-            }
+         
 
             this.StaffID = StaffDataAccess.AddNewStaff(
                 this.PersonID,
                 this.Salary,
-                this.HireDate,
+                DateTime.Now,
                 this.CreatedByUserID,
                 this.SeparationDate,
                 this.StillWorking);
@@ -151,11 +148,15 @@ namespace BCMS_Business.Staff
         /// <returns>Eğer update işlemi sorunsuz olduysa true</returns>
         private bool _UpdateStaff()
         {
-            if (!IsValid())
+            //TODO: cutom attribute düzeltidiktesn sonra IsValide fonksyionu eklenmeki. Sonra her field kontrol edilmeli.
+            //geçerli mi değil mi diye
+            if (this.HireDate<DateTime.Now.AddYears(-50)||this.HireDate>DateTime.Now)
             {
                 return false;
             }
 
+
+            //TODO: update yaparken'de add yaparken de userID o anki sisteme hangi user giriş yapmışsa onun ID'si verilmeli.
             return StaffDataAccess.UpdateStaff(
                 this.StaffID,
                 this.PersonID,
@@ -175,42 +176,6 @@ namespace BCMS_Business.Staff
         {
             return StaffDataAccess.DeleteStaff(this.StaffID);
         }
-
-
-        /// <summary>
-        /// Yazdığımız Attribute kendi kendini kontrol edemez. Bu yüzden bir custom attribute yazdığımızda
-        /// onu okuyabilecek olan kodu da yazmalıyız. Mesela RequiredVariableAttribute attribute'ını okuyabilen
-        /// bir fonksiyon yazarak o attribute'u anlamlı hale getirdik.
-        /// </summary>
-        /// <returns>Eğer required tüm alanlar geçerliyse true döner</returns>
-        private bool IsValid()
-        {
-            Type type = typeof(Staff);
-
-            foreach (var prop in type.GetProperties())
-            {
-               
-                if (Attribute.IsDefined(prop, typeof(Common.Attributes.DateVariableAttribute)))
-                {
-                    var DateAttribute = (Common.Attributes.DateVariableAttribute)Attribute.GetCustomAttribute(
-                        prop,
-                        typeof(Common.Attributes.DateVariableAttribute));
-
-                    DateTime date = Convert.ToDateTime(prop.GetValue(this));
-
-                    if (date < DateAttribute.MinDate || date > DateAttribute.MaxDate)
-                    {
-                        Console.WriteLine(
-                            $"Validation Failed for property '{prop.Name}'. Minimum date is {DateAttribute.MinDate.ToShortDateString()} and maximum date is {DateAttribute.MaxDate.ToShortDateString()}");
-
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
-
 
         /// <summary>
         /// Update ve Add işlemleri bu fonksiyondan çağrılır. Mode eğer add ise o obje için add

@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using BCMS_Business;
 using BCMS_Business.People;
+using BCMS_Business.Staff;
 using BCMS_Business.Users;
 using Common;
 
@@ -29,17 +30,25 @@ namespace BCMS_ConsoleApp
             //p.Phone = "53451231";
 
 
-            User user = User.Find(2);
-            user.UserName = "ibra";
-            user.IsActive = true;
+            //User user = User.Find(2);
+            //user.UserName = "ibra";
+            //user.IsActive = true;
 
-            user.PersonID = 1;
-            user.Save();
+            //user.PersonID = 1;
+            //user.Save();
 
-
-            DateTime? dt = null;
-
-
+            Staff staff = new Staff();
+            staff.HireDate = DateTime.Now;
+            staff.Salary = 12311;
+            staff.PersonID = 1;
+            staff.CreatedByUserID = 1;
+            staff.StillWorking = true;
+            
+                
+            if(staff.Save())
+            {
+                Console.WriteLine("Saved");
+            }
         }
 
     }

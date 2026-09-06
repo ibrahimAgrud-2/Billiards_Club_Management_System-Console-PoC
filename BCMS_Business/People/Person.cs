@@ -20,7 +20,7 @@
             public string LastName { get; set; }
             public string FullName { get { return FirstName + " " + LastName; } }
 
-            [Common.Attributes.DateVariable]
+            [Common.Attributes.BirthDateVariable]
             public DateTime BirthDate { get; set; }
 
             [Common.Attributes.RequiredVariable]
@@ -193,9 +193,9 @@
                             return false;
                         }
                     }
-                    if (Attribute.IsDefined(prop, typeof(Common.Attributes.DateVariableAttribute)))
+                    if (Attribute.IsDefined(prop, typeof(Common.Attributes.BirthDateVariableAttribute)))
                     {
-                        var DateAttribute = (Common.Attributes.DateVariableAttribute)Attribute.GetCustomAttribute(prop, typeof(Common.Attributes.DateVariableAttribute));
+                        var DateAttribute = (Common.Attributes.BirthDateVariableAttribute)Attribute.GetCustomAttribute(prop, typeof(Common.Attributes.BirthDateVariableAttribute));
 
                         DateTime birth = Convert.ToDateTime(prop.GetValue(this));
                    
