@@ -46,6 +46,7 @@
     <Compile Include="People\PersonDataAccess.cs" />
     <Compile Include="Products\ProductDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sessions\SessionDataAccess.cs" />
     <Compile Include="Staff\StaffDataAccess.cs" />
     <Compile Include="TablePrices\TablePriceDataAccess.cs" />
     <Compile Include="Tables\TableDataAccess.cs" />

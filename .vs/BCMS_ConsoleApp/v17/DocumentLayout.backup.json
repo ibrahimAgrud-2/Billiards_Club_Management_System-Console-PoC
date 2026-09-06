@@ -1,40 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|solutionrelative:bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_business\\tables\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|solutionrelative:bcms_business\\tables\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\tables\\tabledataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|solutionrelative:bcms_data\\tables\\tabledataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\products\\productdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|solutionrelative:bcms_data\\products\\productdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_business\\products\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|solutionrelative:bcms_business\\products\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\tableprices\\tablepricedataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|solutionrelative:bcms_data\\tableprices\\tablepricedataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_business\\staff\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|solutionrelative:bcms_business\\staff\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_business\\people\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B119EBFD-4B62-4DA6-8D1B-02E9BFE966C4}|BCMS_Business\\BCMS_Business.csproj|solutionrelative:bcms_business\\people\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -42,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -55,110 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Table.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Tables\\Table.cs",
-              "RelativeDocumentMoniker": "BCMS_Business\\Tables\\Table.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Tables\\Table.cs",
-              "RelativeToolTip": "BCMS_Business\\Tables\\Table.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAcwBEAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T09:04:54.496Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Products\\Product.cs",
-              "RelativeDocumentMoniker": "BCMS_Business\\Products\\Product.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Products\\Product.cs",
-              "RelativeToolTip": "BCMS_Business\\Products\\Product.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAlwHQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T08:59:39.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductDataAccess.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Products\\ProductDataAccess.cs",
-              "RelativeDocumentMoniker": "BCMS_Data\\Products\\ProductDataAccess.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Products\\ProductDataAccess.cs",
-              "RelativeToolTip": "BCMS_Data\\Products\\ProductDataAccess.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAA1wA4AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T09:00:00.225Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TablePriceDataAccess.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\TablePrices\\TablePriceDataAccess.cs",
-              "RelativeDocumentMoniker": "BCMS_Data\\TablePrices\\TablePriceDataAccess.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\TablePrices\\TablePriceDataAccess.cs",
-              "RelativeToolTip": "BCMS_Data\\TablePrices\\TablePriceDataAccess.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAA3wAgAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T08:56:51.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Staff.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Staff\\Staff.cs",
-              "RelativeDocumentMoniker": "BCMS_Business\\Staff\\Staff.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Staff\\Staff.cs",
-              "RelativeToolTip": "BCMS_Business\\Staff\\Staff.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T08:56:11.068Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TableDataAccess.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Tables\\TableDataAccess.cs",
-              "RelativeDocumentMoniker": "BCMS_Data\\Tables\\TableDataAccess.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Tables\\TableDataAccess.cs",
-              "RelativeToolTip": "BCMS_Data\\Tables\\TableDataAccess.cs",
-              "ViewState": "AgIAAM0AAAAAAAAAAAAAAPwAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T08:49:20.459Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Person.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\People\\Person.cs",
-              "RelativeDocumentMoniker": "BCMS_Business\\People\\Person.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\People\\Person.cs",
-              "RelativeToolTip": "BCMS_Business\\People\\Person.cs",
-              "ViewState": "AgIAAKEAAAAAAAAAAAAcwNEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T08:38:27.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_ConsoleApp\\Program.cs",
-              "RelativeDocumentMoniker": "BCMS_ConsoleApp\\Program.cs",
-              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_ConsoleApp\\Program.cs",
-              "RelativeToolTip": "BCMS_ConsoleApp\\Program.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAADwv0QAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-06T07:12:17.197Z",
-              "EditorCaption": ""
             }
           ]
         }
