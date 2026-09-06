@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LogMessages\DBLog.cs" />
+    <Compile Include="OrderItems\OrderItemDataAccess.cs" />
     <Compile Include="People\PersonDataAccess.cs" />
     <Compile Include="Products\ProductDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

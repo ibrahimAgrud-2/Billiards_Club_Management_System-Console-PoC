@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_data\\orderitems\\orderitemdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14FD887B-7235-4D36-A7F9-CF7E7C1A43B9}|BCMS_Data\\BCMS_Data.csproj|solutionrelative:bcms_data\\orderitems\\orderitemdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|solutionrelative:bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,6 +43,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "OrderItemDataAccess.cs",
+              "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\OrderItems\\OrderItemDataAccess.cs",
+              "RelativeDocumentMoniker": "BCMS_Data\\OrderItems\\OrderItemDataAccess.cs",
+              "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\OrderItems\\OrderItemDataAccess.cs",
+              "RelativeToolTip": "BCMS_Data\\OrderItems\\OrderItemDataAccess.cs",
+              "ViewState": "AgIAAFMBAAAAAAAAAAAAAG4BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-06T09:33:56.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_ConsoleApp\\Program.cs",
               "RelativeDocumentMoniker": "BCMS_ConsoleApp\\Program.cs",
@@ -51,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Session.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Business\\Sessions\\Session.cs",
               "RelativeDocumentMoniker": "BCMS_Business\\Sessions\\Session.cs",
@@ -64,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SessionDataAccess.cs",
               "DocumentMoniker": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_Data\\Sessions\\SessionDataAccess.cs",
               "RelativeDocumentMoniker": "BCMS_Data\\Sessions\\SessionDataAccess.cs",
