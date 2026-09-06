@@ -20,7 +20,6 @@ namespace BCMS_Business.Products
         /// </summary>
         public string ImagePath { get; set; }
 
-        [Common.Attributes.RequiredVariable]
         public decimal Price { get; set; }
 
 

@@ -37,18 +37,21 @@ namespace BCMS_ConsoleApp
             //user.PersonID = 1;
             //user.Save();
 
-            Staff staff = new Staff();
-            staff.HireDate = DateTime.Now;
-            staff.Salary = 12311;
-            staff.PersonID = 1;
-            staff.CreatedByUserID = 1;
-            staff.StillWorking = true;
+            //Staff staff = new Staff();
+            //staff.HireDate = DateTime.Now;
+            //staff.Salary = 12311;
+            //staff.PersonID = 1;
+            //staff.CreatedByUserID = 1;
+            //staff.StillWorking = true;
             
                 
-            if(staff.Save())
-            {
-                Console.WriteLine("Saved");
-            }
+            //if(staff.Save())
+            //{
+            //    Console.WriteLine("Saved");
+            //}
+
+
+       
         }
 
     }
