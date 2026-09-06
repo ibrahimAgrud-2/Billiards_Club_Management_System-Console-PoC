@@ -19,6 +19,7 @@ namespace Common
           
         }
 
+      
 
         /// <summary>
         /// Bu attribute date'in min 18 max 65 yılında olması gerekiğinde kullanılır

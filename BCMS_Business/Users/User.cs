@@ -12,15 +12,23 @@ namespace BCMS_Business.Users
         /// </summary>
         public int ID { get; private set; }
 
-        [Common.Attributes.RequiredVariable]
+        //TODO: custom attribute'ta if sorunun çözdükten sonra sayısal değerler için de kontrol ekle.
+        //Şu anki RequiredVariable sadece string değerler için çalışıyor."
         public int PersonID { get; set; }
 
         [Common.Attributes.RequiredVariable]
         public string UserName { get; set; }
 
+       
+
         [Common.Attributes.RequiredVariable]
         public string Password { get; set; }
 
+        /// <summary>
+        /// Şifreyi 2 defa hash yapmamak adına. Update yaperken şifrenin gerçekten değişip değişmediğini kontrol etmeliyiz
+        /// </summary>
+        private static string previousPassword;
+        
         [Common.Attributes.RequiredVariable]
         public bool IsActive { get; set; }
 
@@ -44,6 +52,7 @@ namespace BCMS_Business.Users
             UserName = userName;
             Password = password;
             IsActive = isActive;
+            previousPassword = password;
             Mode = enMode.Update;
         }
 
@@ -82,7 +91,7 @@ namespace BCMS_Business.Users
             string UserName = string.Empty, Password = string.Empty;
             int PersonID = -1;
             bool IsActive = false;
-
+           
 
             if (UserDataAccess.Find(ID, ref PersonID, ref UserName, ref Password, ref IsActive))
             {
@@ -106,7 +115,7 @@ namespace BCMS_Business.Users
             return UserDataAccess.IsUserExists(ID);
         }
 
-
+        
         /// <summary>
         /// Şifreyi bu katmanda encrypt edilemli. Çünkü bu işlem PL veya DL ile alakası olmayan işlem. 
         /// Bu işlem bir logic'tir.
@@ -127,7 +136,8 @@ namespace BCMS_Business.Users
             {
                 return false;
             }
-
+            
+            previousPassword = this.Password;
             this.ID = UserDataAccess.AddNewUser(this.PersonID, this.UserName, EncryptPassword(), this.IsActive);
 
             return (this.ID != -1);
@@ -144,8 +154,16 @@ namespace BCMS_Business.Users
             {
                 return false;
             }
-
-            return UserDataAccess.UpdateUser(this.ID, this.PersonID, this.UserName, EncryptPassword(), this.IsActive);
+            //if(UserDataAccess.GetUserPassword(this.ID)!=this.Password)
+            //{
+            //    this.Password = EncryptPassword();
+            //}
+         
+            if(this.Password!=previousPassword)
+            {
+                this.Password = EncryptPassword();
+            }
+            return UserDataAccess.UpdateUser(this.ID, this.PersonID, this.UserName, this.Password, this.IsActive);
         }
 
 

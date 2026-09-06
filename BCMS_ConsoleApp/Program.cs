@@ -11,6 +11,7 @@ namespace BCMS_ConsoleApp
     
     class program
     {
+ 
         static void Main()
         {
             
@@ -28,8 +29,12 @@ namespace BCMS_ConsoleApp
             //p.Phone = "53451231";
 
 
-            User user = new User();
+            User user = User.Find(2);
+            user.UserName = "ibra";
+            user.IsActive = true;
 
+            user.PersonID = 1;
+            user.Save();
 
 
         }
