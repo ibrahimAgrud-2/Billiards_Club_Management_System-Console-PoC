@@ -6,7 +6,7 @@ using System.Data;
 
 namespace BCMS_Business
 {
-    public class TablePrice
+    public class TablePrices
     {
         /// <summary>
         /// ID Database tarafından verildiği için dışardan set edilememeli.
@@ -27,9 +27,9 @@ namespace BCMS_Business
 
 
         /// <summary>
-        /// DB'den bulunan TablePrice nesnesini oluşturur.
+        /// DB'den bulunan TablePrices nesnesini oluşturur.
         /// </summary>
-        private TablePrice( int priceID,   int createdByUserID,   string description,  decimal pricePerHour)
+        private TablePrices( int priceID,   int createdByUserID,   string description,  decimal pricePerHour)
         {
             PriceID = priceID;
             CreatedByUserID = createdByUserID;
@@ -41,9 +41,9 @@ namespace BCMS_Business
 
 
         /// <summary>
-        /// Yeni bir TablePrice nesnesi oluşturur.
+        /// Yeni bir TablePrices nesnesi oluşturur.
         /// </summary>
-        public TablePrice()
+        public TablePrices()
         {
             PriceID = -1;
             CreatedByUserID = -1;
@@ -55,12 +55,12 @@ namespace BCMS_Business
 
 
         /// <summary>
-        /// DB'deki tüm TablePrice verisini Data Access katmanından alır.
+        /// DB'deki tüm TablePrices verisini Data Access katmanından alır.
         /// </summary>
-        /// <returns>TablePrice kayıtlarını içeren DataTable</returns>
-        public static DataTable GetTablePriceList()
+        /// <returns>TablePrices kayıtlarını içeren DataTable</returns>
+        public static DataTable GetTablePricesList()
         {
-            return TablePriceDataAccess.GetPrices();
+            return TablePricesDataAccess.GetPrices();
         }
 
 
@@ -68,24 +68,24 @@ namespace BCMS_Business
         /// ID ile arama yapar.
         /// Eğer DB'de kayıt varsa o kaydı objeye doldurur.
         /// </summary>
-        /// <param name="priceID">Aranacak TablePrice ID</param>
+        /// <param name="priceID">Aranacak TablePrices ID</param>
         /// <returns>
-        /// Kayıt bulunursa TablePrice objesi,
+        /// Kayıt bulunursa TablePrices objesi,
         /// bulunamazsa null döner.
         /// </returns>
-        public static TablePrice Find(int priceID)
+        public static TablePrices Find(int priceID)
         {
             int createdByUserID = -1;
             string description = null;
             decimal pricePerHour = 0;
 
-            if (TablePriceDataAccess.Find(
+            if (TablePricesDataAccess.Find(
                 priceID,
                 ref createdByUserID,
                 ref description,
                 ref pricePerHour))
             {
-                return new TablePrice(
+                return new TablePrices(
                     priceID,
                     createdByUserID,
                     description,
@@ -99,32 +99,32 @@ namespace BCMS_Business
 
 
         /// <summary>
-        /// TablePrice ID'nin DB'de olup olmadığını kontrol eder.
+        /// TablePrices ID'nin DB'de olup olmadığını kontrol eder.
         /// </summary>
-        /// <param name="priceID">Kontrol edilecek TablePrice ID</param>
+        /// <param name="priceID">Kontrol edilecek TablePrices ID</param>
         /// <returns>
         /// Kayıt varsa true, yoksa false döner.
         /// </returns>
-        public static bool IsTablePriceExists(int priceID)
+        public static bool IsTablePricesExists(int priceID)
         {
-            return TablePriceDataAccess.IsPriceExists(priceID);
+            return TablePricesDataAccess.IsPriceExists(priceID);
         }
 
 
         /// <summary>
-        /// Mode'u AddNew olan TablePrice objesini DB'ye ekler.
+        /// Mode'u AddNew olan TablePrices objesini DB'ye ekler.
         /// </summary>
         /// <returns>
         /// İşlem başarılıysa true, değilse false döner.
         /// </returns>
-        private bool _AddNewTablePrice()
+        private bool _AddNewTablePrices()
         {
             if (!IsValid())
             {
                 return false;
             }
 
-            this.PriceID = TablePriceDataAccess.AddNewPrice(
+            this.PriceID = TablePricesDataAccess.AddNewPrice(
                 this.CreatedByUserID,
                 this.Description,
                 this.PricePerHour);
@@ -134,18 +134,18 @@ namespace BCMS_Business
 
 
         /// <summary>
-        /// DB'de bulunan TablePrice kaydını günceller.
+        /// DB'de bulunan TablePrices kaydını günceller.
         /// </summary>
         /// <returns>
         /// Update işlemi başarılıysa true döner.
         /// </returns>
-        private bool _UpdateTablePrice()
+        private bool _UpdateTablePrices()
         {
             if (!IsValid())
             {
                 return false;
             }
-            return TablePriceDataAccess.UpdatePrice(
+            return TablePricesDataAccess.UpdatePrice(
                 this.PriceID,
                 this.CreatedByUserID,
                 this.Description,
@@ -154,26 +154,26 @@ namespace BCMS_Business
 
 
         /// <summary>
-        /// TablePrice kaydını DB'den siler.
+        /// TablePrices kaydını DB'den siler.
         /// </summary>
         /// <returns>
         /// Silme işlemi başarılıysa true döner.
         /// </returns>
-        public bool DeleteTablePrice()
+        public bool DeleteTablePrices()
         {
-            return TablePriceDataAccess.DeletePrice(this.PriceID);
+            return TablePricesDataAccess.DeletePrice(this.PriceID);
         }
 
 
         /// <summary>
-        /// TablePrice nesnesinin geçerli olup olmadığını kontrol eder.
+        /// TablePrices nesnesinin geçerli olup olmadığını kontrol eder.
         /// </summary>
         /// <returns>
         /// Değerler geçerliyse true, değilse false.
         /// </returns>
         private bool IsValid()
         {
-            Type type = typeof(TablePrice);
+            Type type = typeof(TablePrices);
 
             foreach (var prop in type.GetProperties())
             {
@@ -206,7 +206,7 @@ namespace BCMS_Business
         {
             if (this.Mode == enMode.AddNew)
             {
-                if (_AddNewTablePrice())
+                if (_AddNewTablePrices())
                 {
                     this.Mode = enMode.Update;
                     return true;
@@ -217,7 +217,7 @@ namespace BCMS_Business
                 }
             }
 
-            return _UpdateTablePrice();
+            return _UpdateTablePrices();
         }
     }
 }

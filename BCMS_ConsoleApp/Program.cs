@@ -3,7 +3,9 @@ using System;
 using System.Diagnostics;
 using BCMS_Business;
 using BCMS_Business.People;
+using BCMS_Business.Products;
 using BCMS_Business.Staff;
+using BCMS_Business.Tables;
 using BCMS_Business.Users;
 using Common;
 
@@ -43,15 +45,29 @@ namespace BCMS_ConsoleApp
             //staff.PersonID = 1;
             //staff.CreatedByUserID = 1;
             //staff.StillWorking = true;
-            
-                
+
+
             //if(staff.Save())
             //{
             //    Console.WriteLine("Saved");
             //}
 
 
-       
+            //TablePrices price = new TablePrices();
+            //price.PricePerHour = 11.7M;
+            //price.CreatedByUserID = 1;
+            //price.Description = "VIP";
+
+            //if (price.Save())
+            //    Console.WriteLine("Saved");
+
+            //Table t = new Table();
+
+            //t.TableStatus = Table.enTableStatus.Passive;
+            //t.TableType = Table.enTableType.Caroom;
+            //t.PriceID = 1;
+            //t.Save();
+
         }
 
     }

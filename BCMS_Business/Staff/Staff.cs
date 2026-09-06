@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 
-using BCMS_Data.Staff;
+using BCMS_Data;
 
 namespace BCMS_Business.Staff
 {

@@ -19,7 +19,7 @@ namespace BCMS_Data.Products
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = "select * from Product ";
+                string query = "select * from Products ";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -54,7 +54,7 @@ namespace BCMS_Data.Products
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = "select * from Product where ProductID=@ProductID";
+                string query = "select * from Products where ProductID=@ProductID";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -70,7 +70,7 @@ namespace BCMS_Data.Products
                             {
                                 productName = read["ProductName"].ToString();
                                 imagePath = read["ImagePath"]?.ToString() ?? null;
-                                price = Convert.ToDecimal(read["TablePrice"]);
+                                price = Convert.ToDecimal(read["TablePrices"]);
 
                                 return true;
                             }
@@ -99,7 +99,7 @@ namespace BCMS_Data.Products
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = "SELECT Found=1 FROM Product WHERE ProductID = @ProductID";
+                string query = "SELECT Found=1 FROM Products WHERE ProductID = @ProductID";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -137,8 +137,8 @@ namespace BCMS_Data.Products
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = @"INSERT INTO Product (ProductName, ImagePath, TablePrice)
-                                 VALUES (@ProductName, @ImagePath, @TablePrice);
+                string query = @"INSERT INTO Products (ProductName, ImagePath, Price)
+                                 VALUES (@ProductName, @ImagePath, @Price);
                                  SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -150,7 +150,7 @@ namespace BCMS_Data.Products
                     else
                         cmd.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
 
-                    cmd.Parameters.AddWithValue("@TablePrice", price);
+                    cmd.Parameters.AddWithValue("@Price", price);
 
                     try
                     {
@@ -186,10 +186,10 @@ namespace BCMS_Data.Products
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = @"Update Product
+                string query = @"Update Products
                                  set ProductName = @ProductName,
                                      ImagePath = @ImagePath,
-                                     TablePrice = @TablePrice
+                                     Price = @Price
                                  where ProductID = @ProductID";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -202,7 +202,7 @@ namespace BCMS_Data.Products
                     else
                         cmd.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
 
-                    cmd.Parameters.AddWithValue("@TablePrice", price);
+                    cmd.Parameters.AddWithValue("@Price", price);
 
                     try
                     {
@@ -234,7 +234,7 @@ namespace BCMS_Data.Products
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = @"delete Product where ProductID=@ProductID";
+                string query = @"delete Products where ProductID=@ProductID";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
