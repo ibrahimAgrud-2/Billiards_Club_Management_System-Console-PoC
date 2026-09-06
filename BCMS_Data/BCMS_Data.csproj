@@ -45,6 +45,7 @@
     <Compile Include="LogMessages\DBLog.cs" />
     <Compile Include="People\PersonDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff\StaffDataAccess.cs" />
     <Compile Include="Users\UserDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>

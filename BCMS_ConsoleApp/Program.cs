@@ -37,6 +37,9 @@ namespace BCMS_ConsoleApp
             user.Save();
 
 
+            DateTime? dt = null;
+
+
         }
 
     }
