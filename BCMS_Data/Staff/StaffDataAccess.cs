@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace BCMS_Data.Staff
+namespace BCMS_Data
 {
     public class StaffDataAccess
     {

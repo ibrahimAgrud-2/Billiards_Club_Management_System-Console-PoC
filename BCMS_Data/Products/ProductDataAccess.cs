@@ -70,7 +70,7 @@ namespace BCMS_Data.Products
                             {
                                 productName = read["ProductName"].ToString();
                                 imagePath = read["ImagePath"]?.ToString() ?? null;
-                                price = Convert.ToDecimal(read["Price"]);
+                                price = Convert.ToDecimal(read["TablePrice"]);
 
                                 return true;
                             }
@@ -137,8 +137,8 @@ namespace BCMS_Data.Products
 
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
-                string query = @"INSERT INTO Product (ProductName, ImagePath, Price)
-                                 VALUES (@ProductName, @ImagePath, @Price);
+                string query = @"INSERT INTO Product (ProductName, ImagePath, TablePrice)
+                                 VALUES (@ProductName, @ImagePath, @TablePrice);
                                  SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -150,7 +150,7 @@ namespace BCMS_Data.Products
                     else
                         cmd.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
 
-                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.Parameters.AddWithValue("@TablePrice", price);
 
                     try
                     {
@@ -189,7 +189,7 @@ namespace BCMS_Data.Products
                 string query = @"Update Product
                                  set ProductName = @ProductName,
                                      ImagePath = @ImagePath,
-                                     Price = @Price
+                                     TablePrice = @TablePrice
                                  where ProductID = @ProductID";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -202,7 +202,7 @@ namespace BCMS_Data.Products
                     else
                         cmd.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
 
-                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.Parameters.AddWithValue("@TablePrice", price);
 
                     try
                     {

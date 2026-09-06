@@ -4,14 +4,14 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace BCMS_Data.Price
+namespace BCMS_Data
 {
     public class TablePriceDataAccess
     {
         /// <summary>
-        /// DB'deki Table Price tablosundaki tüm kayıtları alır.
+        /// DB'deki Table TablePrice tablosundaki tüm kayıtları alır.
         /// </summary>
-        /// <returns>Price data table</returns>
+        /// <returns>TablePrice data table</returns>
         public static DataTable GetPrices()
         {
             DataTable dt = new DataTable();
@@ -50,18 +50,18 @@ namespace BCMS_Data.Price
 
 
         /// <summary>
-        /// ID'si verilen Price kaydını bulur.
+        /// ID'si verilen TablePrice kaydını bulur.
         /// Bulursa tüm alanları ilgili parametrelere yükler.
         /// </summary>
         /// <returns>
-        /// Price kaydı varsa true, yoksa false döner.
+        /// TablePrice kaydı varsa true, yoksa false döner.
         /// </returns>
-        public static bool Find(  int priceID,  ref int createdByUserID,  ref string description,ref double pricePerHour)
+        public static bool Find(  int priceID,  ref int createdByUserID,  ref string description,ref decimal pricePerHour)
         {
             using (SqlConnection connection =new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]))
             {
                 string query =
-                    "SELECT * FROM Price WHERE PriceID = @PriceID";
+                    "SELECT * FROM TablePrice WHERE PriceID = @PriceID";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -103,9 +103,9 @@ namespace BCMS_Data.Price
 
 
         /// <summary>
-        /// ID'si verilen Price kaydının DB'de olup olmadığını kontrol eder.
+        /// ID'si verilen TablePrice kaydının DB'de olup olmadığını kontrol eder.
         /// </summary>
-        /// <param name="priceID">Kontrol edilecek Price ID</param>
+        /// <param name="priceID">Kontrol edilecek TablePrice ID</param>
         /// <returns>
         /// Kayıt varsa true, yoksa false döner.
         /// </returns>
@@ -148,7 +148,7 @@ namespace BCMS_Data.Price
 
 
         /// <summary>
-        /// Yeni Price kaydı ekler.
+        /// Yeni TablePrice kaydı ekler.
         /// </summary>
         /// <returns>
         /// DB tarafından otomatik verilen PriceID.
@@ -224,7 +224,7 @@ namespace BCMS_Data.Price
 
 
         /// <summary>
-        /// ID'si verilen Price kaydını günceller.
+        /// ID'si verilen TablePrice kaydını günceller.
         /// </summary>
         /// <returns>
         /// Update işlemi başarılıysa true, değilse false.
@@ -287,9 +287,9 @@ namespace BCMS_Data.Price
 
 
         /// <summary>
-        /// ID'si verilen Price kaydını siler.
+        /// ID'si verilen TablePrice kaydını siler.
         /// </summary>
-        /// <param name="priceID">Silinecek Price ID</param>
+        /// <param name="priceID">Silinecek TablePrice ID</param>
         /// <returns>
         /// Delete işlemi başarılıysa true, değilse false.
         /// </returns>
