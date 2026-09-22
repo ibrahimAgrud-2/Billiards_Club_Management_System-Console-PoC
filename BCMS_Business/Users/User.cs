@@ -158,11 +158,7 @@ namespace BCMS_Business.Users
             {
                 return false;
             }
-            //if(UserDataAccess.GetUserPassword(this.ID)!=this.Password)
-            //{
-            //    this.Password = EncryptPassword();
-            //}
-         
+
             if(this.Password!=previousPassword)
             {
                 this.Password = EncryptPassword();
