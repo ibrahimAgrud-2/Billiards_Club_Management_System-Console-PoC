@@ -18,7 +18,7 @@ namespace BCMS_Business.OrderItems
 
         public short Quantity { get; set; }
 
-        public short ProductPice { get; set; }
+        public short ProductPrice { get; set; }
 
 
         public enum enMode { AddNew = 0, Update = 1 };
@@ -40,7 +40,7 @@ namespace BCMS_Business.OrderItems
             SessionID = sessionID;
             ProductID = productID;
             Quantity = quantity;
-            ProductPice = productPice;
+            ProductPrice = productPice;
 
             Mode = enMode.Update;
         }
@@ -55,7 +55,7 @@ namespace BCMS_Business.OrderItems
             SessionID = -1;
             ProductID = -1;
             Quantity = 0;
-            ProductPice = 0;
+            ProductPrice = 0;
 
             Mode = enMode.AddNew;
         }
@@ -142,7 +142,7 @@ namespace BCMS_Business.OrderItems
                 this.SessionID,
                 this.ProductID,
                 this.Quantity,
-                this.ProductPice);
+                this.ProductPrice);
 
             return (this.ItemID != -1);
         }
@@ -166,7 +166,7 @@ namespace BCMS_Business.OrderItems
                 this.SessionID,
                 this.ProductID,
                 this.Quantity,
-                this.ProductPice);
+                this.ProductPrice);
         }
 
 

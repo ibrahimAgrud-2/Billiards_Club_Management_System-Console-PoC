@@ -136,10 +136,14 @@ namespace BCMS_Business.Users
             {
                 return false;
             }
-            
-            previousPassword = this.Password;
-            this.ID = UserDataAccess.AddNewUser(this.PersonID, this.UserName, EncryptPassword(), this.IsActive);
 
+            this.Password = EncryptPassword();
+            this.ID = UserDataAccess.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
+            /// <summary>
+            //Şimdi kişiyi ekledikten sonra şifresi hashlenmiş bir şekilde DB'de olacak ama burada previous hala hashlenmemiş olacak. 
+            //bu sorunu çözmek adına previous Password'da hashlenmiş olarak tutulmalı.
+            /// </summary>
+            previousPassword = this.Password;
             return (this.ID != -1);
         }
 

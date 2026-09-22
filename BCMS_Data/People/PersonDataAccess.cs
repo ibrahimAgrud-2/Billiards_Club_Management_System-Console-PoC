@@ -310,7 +310,5 @@ namespace BCMS_Data.People
             return (rowsAffected > 0);
 
         }
-
-
     }
 }
