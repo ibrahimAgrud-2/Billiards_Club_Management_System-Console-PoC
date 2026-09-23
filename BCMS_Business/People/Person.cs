@@ -13,14 +13,14 @@
             /// </summary>
             public int PersonID { get; private set; }
 
-            [Common.Attributes.RequiredVariable]
+            [Common.Attributes.RequiredField]
             public string FirstName { get; set; }
 
-            [Common.Attributes.RequiredVariable]
+            [Common.Attributes.RequiredField]
             public string LastName { get; set; }
             public string FullName { get { return FirstName + " " + LastName; } }
 
-            [Common.Attributes.BirthDateVariable]
+            [Common.Attributes.BirthDateValidation]
             public DateTime BirthDate { get; set; }
 
             [Common.Attributes.RequiredVariable]
