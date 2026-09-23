@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BCMS_Data.Users;
+using System;
 using System.Data;
-
-using BCMS_Data.Users;
+using static Common.Attributes;
 
 namespace BCMS_Business.Users
 {
@@ -12,8 +12,7 @@ namespace BCMS_Business.Users
         /// </summary>
         public int ID { get; private set; }
 
-        //TODO: custom attribute'ta if sorunun çözdükten sonra sayısal değerler için de kontrol ekle.
-        //Şu anki RequiredVariable sadece string değerler için çalışıyor."
+        [Common.Attributes.RequiredVariable]
         public int PersonID { get; set; }
 
         [Common.Attributes.RequiredVariable]
@@ -186,22 +185,35 @@ namespace BCMS_Business.Users
         {
             Type type = typeof(User);
 
+            //tüm propları al
             foreach (var prop in type.GetProperties())
             {
-                if (Attribute.IsDefined(prop, typeof(Common.Attributes.RequiredVariableAttribute)))
+                if (Attribute.IsDefined(prop, typeof(PropertiesValidationAttribute)))
                 {
-                    string value = prop.GetValue(this)?.ToString();
+                    //Bu adımda ise "bir" property için tanımlanmış tüm attributları bir dizi halinde alıyoruz
+                    object[] allAttributes = Attribute.GetCustomAttributes(prop, typeof(PropertiesValidationAttribute));
 
-                    if (string.IsNullOrEmpty(value))
+                    foreach (PropertiesValidationAttribute attribute in allAttributes)
                     {
-                        Console.WriteLine($"Validation Failed for property '{prop.Name}'");
-                        return false;
+                        //PropertiesValidationAttribute sayesinde her bir attrute kendi isValid fonksiyounu çağırıyoruz.
+                        //bu sayede tanımladığımız attributeları ayrı ayrı kontrol etmek yerine
+                        //PropertiesValidationAttribute'ı kontrol ediyoruz. Oda bir attribtute için //attribute'ın isValid fonksiyonun çağırıyor.
+                        if (!attribute.IsValid(prop.GetValue(this), $"Validation Failed for Property {prop.Name}"))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (true)
+                    {
+
                     }
                 }
             }
-
             return true;
         }
+
+
 
 
         /// <summary>

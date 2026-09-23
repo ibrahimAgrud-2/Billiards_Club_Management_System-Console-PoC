@@ -1,8 +1,10 @@
-﻿using BCMS_Business.People;
+﻿using BCMS_Business.OrderItems;
+using BCMS_Business.People;
 using BCMS_Data;
 
 using System;
 using System.Data;
+using static Common.Attributes;
 
 namespace BCMS_Business
 {
@@ -12,12 +14,15 @@ namespace BCMS_Business
         /// ID Database tarafından verildiği için dışardan set edilememeli.
         /// </summary>
         public int PriceID { get; private set; }
-
+       
+        [Common.Attributes.RequiredVariable]
         public int CreatedByUserID { get; set; }
+
 
         [Common.Attributes.RequiredVariable]
         public string Description { get; set; }
 
+        [Common.Attributes.RequiredVariable]
         public decimal PricePerHour { get; set; }
 
 
@@ -175,23 +180,34 @@ namespace BCMS_Business
         {
             Type type = typeof(TablePrices);
 
+            //tüm propları al
             foreach (var prop in type.GetProperties())
             {
-                if (Attribute.IsDefined(prop, typeof(Common.Attributes.RequiredVariableAttribute)))
+                if (Attribute.IsDefined(prop, typeof(PropertiesValidationAttribute)))
                 {
+                    //Bu adımda ise "bir" property için tanımlanmış tüm attributları bir dizi halinde alıyoruz
+                    object[] allAttributes = Attribute.GetCustomAttributes(prop, typeof(PropertiesValidationAttribute));
 
-                    string value = prop.GetValue(this)?.ToString();
-
-                    if (string.IsNullOrEmpty(value))
+                    foreach (PropertiesValidationAttribute attribute in allAttributes)
                     {
-                        //prop.name=o an kontrol ettiğimiz prop adı. Kişi adı değil
-                        Console.WriteLine($"Validation Failed for property '{prop.Name}'");
-                        return false;
+                        //PropertiesValidationAttribute sayesinde her bir attrute kendi isValid fonksiyounu çağırıyoruz.
+                        //bu sayede tanımladığımız attributeları ayrı ayrı kontrol etmek yerine
+                        //PropertiesValidationAttribute'ı kontrol ediyoruz. Oda bir attribtute için //attribute'ın isValid fonksiyonun çağırıyor.
+                        if (!attribute.IsValid(prop.GetValue(this), $"Validation Failed for Property {prop.Name}"))
+                        {
+                            return false;
+                        }
                     }
-                } 
+
+                    if (true)
+                    {
+
+                    }
+                }
             }
             return true;
         }
+
 
 
         /// <summary>

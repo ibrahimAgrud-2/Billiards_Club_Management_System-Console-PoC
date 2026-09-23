@@ -1,7 +1,7 @@
-﻿    using System;
+﻿    using  BCMS_Data.People;
+    using System;
     using System.Data;
-
-    using  BCMS_Data.People;
+using static Common.Attributes;
 
     namespace BCMS_Business.People
     {
@@ -13,14 +13,14 @@
             /// </summary>
             public int PersonID { get; private set; }
 
-            [Common.Attributes.RequiredField]
+            [Common.Attributes.RequiredVariable]
             public string FirstName { get; set; }
 
-            [Common.Attributes.RequiredField]
+            [Common.Attributes.RequiredVariable]
             public string LastName { get; set; }
             public string FullName { get { return FirstName + " " + LastName; } }
 
-            [Common.Attributes.BirthDateValidation]
+            [Common.Attributes.ValidateDate(-65,-18)]
             public DateTime BirthDate { get; set; }
 
             [Common.Attributes.RequiredVariable]
@@ -179,35 +179,33 @@
             {
                 Type type = typeof(Person);
 
+                //tüm propları al
                 foreach (var prop in type.GetProperties())
                 {
-                    if (Attribute.IsDefined(prop, typeof(Common.Attributes.RequiredVariableAttribute)))
+                    if (Attribute.IsDefined(prop, typeof(PropertiesValidationAttribute)))
                     {
-       
-                        string value = prop.GetValue(this)?.ToString();
+                        //Bu adımda ise "bir" property için tanımlanmış tüm attributları bir dizi halinde alıyoruz
+                        object[] allAttributes = Attribute.GetCustomAttributes(prop, typeof(PropertiesValidationAttribute));
 
-                        if (string.IsNullOrEmpty(value))
+                        foreach (PropertiesValidationAttribute attribute in allAttributes)
                         {
-                            //prop.name=o an kontrol ettiğimiz prop adı. Kişi adı değil
-                            Console.WriteLine($"Validation Failed for property '{prop.Name}'");
-                            return false;
-                        }
-                    }
-                    if (Attribute.IsDefined(prop, typeof(Common.Attributes.BirthDateVariableAttribute)))
-                    {
-                        var DateAttribute = (Common.Attributes.BirthDateVariableAttribute)Attribute.GetCustomAttribute(prop, typeof(Common.Attributes.BirthDateVariableAttribute));
-
-                        DateTime birth = Convert.ToDateTime(prop.GetValue(this));
-                   
-                            if (birth < DateAttribute.MinDate || birth > DateAttribute.MaxDate)
+                            //PropertiesValidationAttribute sayesinde her bir attrute kendi isValid fonksiyounu çağırıyoruz.
+                            //bu sayede tanımladığımız attributeları ayrı ayrı kontrol etmek yerine
+                            //PropertiesValidationAttribute'ı kontrol ediyoruz. Oda bir attribtute için //attribute'ın isValid fonksiyonun çağırıyor.
+                            if (!attribute.IsValid(prop.GetValue(this), $"Validation Failed for Property {prop.Name}"))
                             {
-                                Console.WriteLine($"Validation Failed for property '{prop.Name}'. Minimum date is  {DateAttribute.MinDate.ToShortDateString()} and maximum date is {DateAttribute.MaxDate.ToShortDateString()}");
                                 return false;
                             }
+                        }
+
+                        if (true)
+                        {
+
+                        }
                     }
                 }
                 return true;
-            }
+        }
         
             /// <summary>
             /// Update ve Add işlemleri bu fonksiyondan çağrılır. Mode eğer add ise o obje için add fonksiyonun çağırır. Değilse  o obje için update fonksiyonunu çağırır.

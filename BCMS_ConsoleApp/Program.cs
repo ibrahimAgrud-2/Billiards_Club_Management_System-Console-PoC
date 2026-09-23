@@ -6,8 +6,8 @@ namespace BCMS_ConsoleApp
     {
         static void Main()
         {
-          
 
+            Console.WriteLine("tes");
         }
 
     }

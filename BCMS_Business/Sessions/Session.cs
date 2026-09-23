@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BCMS_Data.Sessions;
+using System;
 using System.Data;
-
-using BCMS_Data.Sessions;
+using static Common.Attributes;
 
 namespace BCMS_Business.Sessions
 {
@@ -12,14 +12,16 @@ namespace BCMS_Business.Sessions
         /// </summary>
         public int SessionID { get; private set; }
 
+        [Common.Attributes.RequiredVariable]
         public int CreatedByStaffID { get; set; }
-
+        [Common.Attributes.RequiredVariable]
         public int TableID { get; set; }
 
+        //TODO: Session date ve time sistem tarafında verilmesi gerekebilir. Çünkü ikigün sonra session açamazsın veya 2 gün önce session açamazsın. Bir session açtığında o anki zaman bilgisi ile açılır
+        //Her ne kadar session sistem tarafından verilecek olsa da biz yinde date'in istediğimiz aralıkta olup olmaığını kontrol etmek istiyoruz
+        [Common.Attributes.ValidateDate(0,0)]
         public DateTime SessionDate { get; set; }
-
         public DateTime SessionStartTime { get; set; }
-
         public DateTime SessionEndTime { get; set; }
 
         public enum enSessionStatus { Active = 1, Cancelled = 2, };
@@ -202,8 +204,36 @@ namespace BCMS_Business.Sessions
         /// </returns>
         private bool IsValid()
         {
+            Type type = typeof(Session);
+
+            //tüm propları al
+            foreach (var prop in type.GetProperties())
+            {
+                if (Attribute.IsDefined(prop, typeof(PropertiesValidationAttribute)))
+                {
+                    //Bu adımda ise "bir" property için tanımlanmış tüm attributları bir dizi halinde alıyoruz
+                    object[] allAttributes = Attribute.GetCustomAttributes(prop, typeof(PropertiesValidationAttribute));
+
+                    foreach (PropertiesValidationAttribute attribute in allAttributes)
+                    {
+                        //PropertiesValidationAttribute sayesinde her bir attrute kendi isValid fonksiyounu çağırıyoruz.
+                        //bu sayede tanımladığımız attributeları ayrı ayrı kontrol etmek yerine
+                        //PropertiesValidationAttribute'ı kontrol ediyoruz. Oda bir attribtute için //attribute'ın isValid fonksiyonun çağırıyor.
+                        if (!attribute.IsValid(prop.GetValue(this), $"Validation Failed for Property {prop.Name}"))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (true)
+                    {
+
+                    }
+                }
+            }
             return true;
         }
+
 
 
         /// <summary>

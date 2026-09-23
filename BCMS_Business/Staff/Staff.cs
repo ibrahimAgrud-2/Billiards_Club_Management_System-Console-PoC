@@ -1,8 +1,8 @@
 ﻿
+using BCMS_Data;
 using System;
 using System.Data;
-
-using BCMS_Data;
+using static Common.Attributes;
 
 namespace BCMS_Business.Staff
 {
@@ -13,13 +13,13 @@ namespace BCMS_Business.Staff
         /// </summary>
         public int StaffID { get; private set; }
 
-
+        [Common.Attributes.RequiredVariable]
         public int PersonID { get; set; }
 
-
+        [Common.Attributes.RequiredVariable]
         public decimal Salary { get; set; }
 
-       
+        [Common.Attributes.RequiredVariable]
         public DateTime HireDate { get; set; }
 
         public int CreatedByUserID { get; set; }
@@ -29,7 +29,7 @@ namespace BCMS_Business.Staff
         /// </summary>
         public DateTime? SeparationDate { get; set; }
 
-
+        [Common.Attributes.RequiredVariable]
         public bool StillWorking { get; set; }
 
 
@@ -121,6 +121,38 @@ namespace BCMS_Business.Staff
             return StaffDataAccess.IsStaffExists(staffID);
         }
 
+        private bool IsValid()
+        {
+            Type type = typeof(Staff);
+
+            //tüm propları al
+            foreach (var prop in type.GetProperties())
+            {
+                if (Attribute.IsDefined(prop, typeof(PropertiesValidationAttribute)))
+                {
+                    //Bu adımda ise "bir" property için tanımlanmış tüm attributları bir dizi halinde alıyoruz
+                    object[] allAttributes = Attribute.GetCustomAttributes(prop, typeof(PropertiesValidationAttribute));
+
+                    foreach (PropertiesValidationAttribute attribute in allAttributes)
+                    {
+                        //PropertiesValidationAttribute sayesinde her bir attrute kendi isValid fonksiyounu çağırıyoruz.
+                        //bu sayede tanımladığımız attributeları ayrı ayrı kontrol etmek yerine
+                        //PropertiesValidationAttribute'ı kontrol ediyoruz. Oda bir attribtute için //attribute'ın isValid fonksiyonun çağırıyor.
+                        if (!attribute.IsValid(prop.GetValue(this), $"Validation Failed for Property {prop.Name}"))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (true)
+                    {
+
+                    }
+                }
+            }
+            return true;
+        }
+
 
         /// <summary>
         /// Mode'u add olan staff objesini DB'ye ekler.
@@ -128,8 +160,10 @@ namespace BCMS_Business.Staff
         /// <returns>Geriye otomatik olarak SSMS tarafından verilen ID'yi döndürür</returns>
         private bool _AddNewStaff()
         {
-         
-
+            if(!IsValid())
+            {
+                return false;
+            }
             this.StaffID = StaffDataAccess.AddNewStaff(
                 this.PersonID,
                 this.Salary,
@@ -148,8 +182,11 @@ namespace BCMS_Business.Staff
         /// <returns>Eğer update işlemi sorunsuz olduysa true</returns>
         private bool _UpdateStaff()
         {
-            //TODO: cutom attribute düzeltidiktesn sonra IsValide fonksyionu eklenmeki. Sonra her field kontrol edilmeli.
-            //geçerli mi değil mi diye
+            if (!IsValid())
+            {
+                return false;
+            }
+
             if (this.HireDate<DateTime.Now.AddYears(-50)||this.HireDate>DateTime.Now)
             {
                 return false;

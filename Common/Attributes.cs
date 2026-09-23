@@ -10,36 +10,7 @@ namespace Common
     public class Attributes
     {
 
-        /// <summary>
-        /// Bu attribute null olmaması gereken proplar içindir
-        /// </summary>
-        [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-        public class RequiredVariableAttribute:Attribute
-        {  
-          
-        }
 
-      
-
-        /// <summary>
-        /// Bu attribute date'in min 18 max 65 yılında olması gerekiğinde kullanılır.
-        /// Date mutlaka 'gün-ay-yıl' formatında olmalıdır.
-        /// </summary>
-        [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-        public class BirthDateVariableAttribute:Attribute
-        {
-
-            public DateTime MinDate;
-            public DateTime MaxDate;
-            public BirthDateVariableAttribute()
-            {
-
-                this.MaxDate = DateTime.Now.AddYears(-18);
-                this.MinDate = DateTime.Now.AddYears(-65);
-            }
-        }
-
-     //*********************************************************
         /*
     * biz PropertiesValidationAttribute'i yani ana attribute'ı şu yüzden tanımladık: her bir attribute türünü ayrı ayrı kontrol etmek yerine bir ana attribute'u kontrol ederiz. O ana attribute alt attributeların isValid fonksyionlarını çağıracak.
     */
@@ -50,7 +21,7 @@ namespace Common
         }
 
         [AttributeUsage(AttributeTargets.Property)]
-        public class RequiredFieldAttribute : PropertiesValidationAttribute
+        public class RequiredVariableAttribute : PropertiesValidationAttribute
         {
             public override bool IsValid(object value, string message)
             {
@@ -63,44 +34,54 @@ namespace Common
             }
         }
 
+        /// <summary>
+        /// ilk paramtere bu günden itibaren ne kadar geride olabilir. Mesela -65 bugünden 65 yıl önce demek. Yani 1964 gibi. İkinci paramtere ise en geç kaç olabilr. 
+        /// (-65,0) demek min 1964 max bugün
+        /// </summary>
         [AttributeUsage(AttributeTargets.Property)]
-        public class BirthDateValidationAttribute : PropertiesValidationAttribute
+        public class ValidateDateAttribute : PropertiesValidationAttribute
         {
-
             public DateTime MinDate;
             public DateTime MaxDate;
-            /// <summary>
-            /// Eğer min date verilmemişse default olarak -70 yapıyoruz. yani en erken 1964 yılında doğmuş olabilir
-            /// Aynı şey max içinde geçerli. Eğer değer verilmemişse. Doğum günü -18 yani en geç 2008'e ayarlanıyor.
-            /// Yani değerler boşsa default doğun tarihi (sistemin kabul ettiği) 1960-2008 arasında oluyor.
-            /// <param name="minDate"></param>
-            /// <param name="maxDate"></param>
-            public BirthDateValidationAttribute(string minDate = "", string maxDate = "")
-            {
-                if (string.IsNullOrEmpty(minDate))
-                {
-                    minDate = DateTime.Now.AddYears(-70).ToString();
-                }
-                if (string.IsNullOrEmpty(maxDate))
-                {
-                    maxDate = DateTime.Now.AddYears(-18).ToString();
-                }
 
-                this.MaxDate = Convert.ToDateTime(maxDate);
-                this.MinDate = Convert.ToDateTime(minDate);
+            /*
+             paramtereler int olacak. minDate ve MaxDate şekilden (daha nantıklı bir paramtere ismi bulunabilir)
+            Şu şekilde çalışacak:
+
+                BirthDate için ben (-65,-18) dedim bu demek oluyor ki. min tarih günümüzden -65 daha uzakta yani 1964 civarı. ve max 2008 civarında olacak. Bu şekide kontrol edilebilir. Contructor içinde de şu şekilde ekleme yapıyorum this.MinDate = DateTime.Now.AddYears(minDate); this.MaxDate = DateTime.Now.AddYears(maxDate);
+                HireDate için (-65,0) şeklinde olur. Bu sayede eski elemanları kayıt edebilir ama gelecekte eleman kayıt edemezsin. Yani bir eleman kayıt ederken tarihi yarın veremezsin
+                SessionDate içinde (0,0) olarak veririm. Bu sayede ne dün ne de yarın için date kayıt edemezsin
+            */
+            public ValidateDateAttribute(int minDate, int maxDate)
+            {
+                this.MinDate = DateTime.Now.Date.AddYears(minDate);
+                this.MaxDate = DateTime.Now.Date.AddYears(maxDate);
             }
             public override bool IsValid(object value, string message)
             {
 
-                DateTime birthDate = Convert.ToDateTime(value);
-                if (birthDate < MinDate || birthDate > MaxDate)
+                DateTime date = Convert.ToDateTime(value);
+                if (date < MinDate)
                 {
                     Console.WriteLine(message);
                     return false;
                 }
+                if (date > MaxDate)
+                {
+                    Console.WriteLine(message);
+                    return false;
+                }
+
+
                 return true;
+
             }
 
         }
+
+
+   
+
+
     }
 }

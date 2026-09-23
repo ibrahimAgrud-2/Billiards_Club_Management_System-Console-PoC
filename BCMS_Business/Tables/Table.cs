@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BCMS_Data.Tables;
+using System;
 using System.Data;
-
-using BCMS_Data.Tables;
+using static Common.Attributes;
 
 namespace BCMS_Business.Tables
 {
@@ -12,6 +12,7 @@ namespace BCMS_Business.Tables
         /// </summary>
         public int TableID { get; private set; }
 
+        [Common.Attributes.RequiredVariable]
         public int PriceID { get; set; }
 
         public enum enTableType { Caroom = 1, Snooker = 2 };
@@ -114,6 +115,39 @@ namespace BCMS_Business.Tables
             return TableDataAccess.IsTableExists(tableID);
         }
 
+        private bool IsValid()
+        {
+            Type type = typeof(Table);
+
+            //tüm propları al
+            foreach (var prop in type.GetProperties())
+            {
+                if (Attribute.IsDefined(prop, typeof(PropertiesValidationAttribute)))
+                {
+                    //Bu adımda ise "bir" property için tanımlanmış tüm attributları bir dizi halinde alıyoruz
+                    object[] allAttributes = Attribute.GetCustomAttributes(prop, typeof(PropertiesValidationAttribute));
+
+                    foreach (PropertiesValidationAttribute attribute in allAttributes)
+                    {
+                        //PropertiesValidationAttribute sayesinde her bir attrute kendi isValid fonksiyounu çağırıyoruz.
+                        //bu sayede tanımladığımız attributeları ayrı ayrı kontrol etmek yerine
+                        //PropertiesValidationAttribute'ı kontrol ediyoruz. Oda bir attribtute için //attribute'ın isValid fonksiyonun çağırıyor.
+                        if (!attribute.IsValid(prop.GetValue(this), $"Validation Failed for Property {prop.Name}"))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (true)
+                    {
+
+                    }
+                }
+            }
+            return true;
+        }
+
+
 
         /// <summary>
         /// Mode'u AddNew olan Table objesini DB'ye ekler.
@@ -123,10 +157,10 @@ namespace BCMS_Business.Tables
         /// </returns>
         private bool _AddNewTable()
         {
-            //if (!IsValid())
-            //{
-            //    return false;
-            //}
+            if (!IsValid())
+            {
+                return false;
+            }
 
             this.TableID = TableDataAccess.AddNewTable(
                 this.PriceID,
@@ -145,6 +179,10 @@ namespace BCMS_Business.Tables
         /// </returns>
         private bool _UpdateTable()
         {
+            if (!IsValid())
+            {
+                return false;
+            }
 
             return TableDataAccess.UpdateTable(
                 this.TableID,

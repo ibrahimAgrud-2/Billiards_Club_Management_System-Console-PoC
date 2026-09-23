@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BCMS_Data.OrderItems;
+using System;
 using System.Data;
-
-using BCMS_Data.OrderItems;
+using static Common.Attributes;
 
 namespace BCMS_Business.OrderItems
 {
@@ -10,14 +10,20 @@ namespace BCMS_Business.OrderItems
         /// <summary>
         /// ID Database tarafından verildiği için dışardan set edilememeli.
         /// </summary>
+        /// 
+          [Common.Attributes.RequiredVariable]
         public int ItemID { get; private set; }
 
+        [Common.Attributes.RequiredVariable]
         public int SessionID { get; set; }
 
+        [Common.Attributes.RequiredVariable]
         public int ProductID { get; set; }
 
+        [Common.Attributes.RequiredVariable]
         public short Quantity { get; set; }
 
+        [Common.Attributes.RequiredVariable]
         public short ProductPrice { get; set; }
 
 
@@ -190,6 +196,33 @@ namespace BCMS_Business.OrderItems
         /// </returns>
         private bool IsValid()
         {
+            Type type = typeof(OrderItem);
+
+            //tüm propları al
+            foreach (var prop in type.GetProperties())
+            {
+                if (Attribute.IsDefined(prop, typeof(PropertiesValidationAttribute)))
+                {
+                    //Bu adımda ise "bir" property için tanımlanmış tüm attributları bir dizi halinde alıyoruz
+                    object[] allAttributes = Attribute.GetCustomAttributes(prop, typeof(PropertiesValidationAttribute));
+
+                    foreach (PropertiesValidationAttribute attribute in allAttributes)
+                    {
+                        //PropertiesValidationAttribute sayesinde her bir attrute kendi isValid fonksiyounu çağırıyoruz.
+                        //bu sayede tanımladığımız attributeları ayrı ayrı kontrol etmek yerine
+                        //PropertiesValidationAttribute'ı kontrol ediyoruz. Oda bir attribtute için //attribute'ın isValid fonksiyonun çağırıyor.
+                        if (!attribute.IsValid(prop.GetValue(this), $"Validation Failed for Property {prop.Name}"))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (true)
+                    {
+
+                    }
+                }
+            }
             return true;
         }
 
