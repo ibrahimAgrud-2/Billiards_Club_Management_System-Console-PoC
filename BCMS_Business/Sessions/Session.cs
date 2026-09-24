@@ -12,9 +12,9 @@ namespace BCMS_Business.Sessions
         /// </summary>
         public int SessionID { get; private set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int CreatedByStaffID { get; set; }
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int TableID { get; set; }
 
         //TODO: Session date ve time sistem tarafında verilmesi gerekebilir. Çünkü ikigün sonra session açamazsın veya 2 gün önce session açamazsın. Bir session açtığında o anki zaman bilgisi ile açılır

@@ -172,8 +172,8 @@ namespace BCMS_Data.OrderItems
         public static int AddNewOrderItem(
             int sessionID,
             int productID,
-            short quantity,
-            short productPice)
+            int quantity,
+            int productPice)
         {
             int itemID = -1;
 
@@ -257,8 +257,8 @@ namespace BCMS_Data.OrderItems
             int itemID,
             int sessionID,
             int productID,
-            short quantity,
-            short productPice)
+            int quantity,
+            int productPice)
         {
             int rowsAffected = -1;
 

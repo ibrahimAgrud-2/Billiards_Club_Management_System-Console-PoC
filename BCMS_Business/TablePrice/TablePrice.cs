@@ -15,14 +15,14 @@ namespace BCMS_Business
         /// </summary>
         public int PriceID { get; private set; }
        
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int CreatedByUserID { get; set; }
 
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.RequiredStringVariable]
         public string Description { get; set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public decimal PricePerHour { get; set; }
 
 

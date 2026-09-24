@@ -13,15 +13,16 @@ namespace BCMS_Business.Staff
         /// </summary>
         public int StaffID { get; private set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int PersonID { get; set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public decimal Salary { get; set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.ValidateDate(-65,0)]
         public DateTime HireDate { get; set; }
 
+        [Common.Attributes.PositiveInteger]
         public int CreatedByUserID { get; set; }
 
         /// <summary>
@@ -29,7 +30,6 @@ namespace BCMS_Business.Staff
         /// </summary>
         public DateTime? SeparationDate { get; set; }
 
-        [Common.Attributes.RequiredVariable]
         public bool StillWorking { get; set; }
 
 

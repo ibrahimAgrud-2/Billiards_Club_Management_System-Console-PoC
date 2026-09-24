@@ -12,7 +12,7 @@ namespace BCMS_Business.Products
         /// </summary>
         public int ProductID { get; private set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.RequiredStringVariable]
         public string ProductName { get; set; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace BCMS_Business.Products
         /// </summary>
         public string ImagePath { get; set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public decimal Price { get; set; }
 
 

@@ -11,20 +11,20 @@ namespace BCMS_Business.OrderItems
         /// ID Database tarafından verildiği için dışardan set edilememeli.
         /// </summary>
         /// 
-         [Common.Attributes.RequiredVariable]
+         [Common.Attributes.PositiveInteger]
         public int ItemID { get; private set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int SessionID { get; set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int ProductID { get; set; }
 
-        [Common.Attributes.RequiredVariable]
-        public short Quantity { get; set; }
+        [Common.Attributes.PositiveInteger]
+        public int Quantity { get; set; }
 
-        [Common.Attributes.RequiredVariable]
-        public short ProductPrice { get; set; }
+        [Common.Attributes.PositiveInteger]
+        public int ProductPrice { get; set; }
 
 
         public enum enMode { AddNew = 0, Update = 1 };
@@ -39,8 +39,8 @@ namespace BCMS_Business.OrderItems
             int itemID,
             int sessionID,
             int productID,
-            short quantity,
-            short productPice)
+            int quantity,
+            int productPice)
         {
             ItemID = itemID;
             SessionID = sessionID;

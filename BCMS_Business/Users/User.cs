@@ -12,25 +12,26 @@ namespace BCMS_Business.Users
         /// </summary>
         public int ID { get; private set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int PersonID { get; set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.RequiredStringVariable]
         public string UserName { get; set; }
 
        
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.RequiredStringVariable]
         public string Password { get; set; }
+
+        public bool IsActive { get; set; }
+
 
         /// <summary>
         /// Şifreyi 2 defa hash yapmamak adına. Update yaperken şifrenin gerçekten değişip değişmediğini kontrol etmeliyiz
         /// </summary>
         private static string previousPassword;
         
-        [Common.Attributes.RequiredVariable]
-        public bool IsActive { get; set; }
-
+  
 
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode { get; private set; } = enMode.AddNew;

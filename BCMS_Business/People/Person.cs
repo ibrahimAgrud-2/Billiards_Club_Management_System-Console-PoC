@@ -13,10 +13,10 @@ using static Common.Attributes;
             /// </summary>
             public int PersonID { get; private set; }
 
-            [Common.Attributes.RequiredVariable]
+            [Common.Attributes.PositiveInteger]
             public string FirstName { get; set; }
 
-            [Common.Attributes.RequiredVariable]
+            [Common.Attributes.RequiredStringVariable]
             public string LastName { get; set; }
             public string FullName { get { return FirstName + " " + LastName; } }
 
@@ -25,7 +25,7 @@ using static Common.Attributes;
 
 
 
-            [Common.Attributes.RequiredVariable]
+            [Common.Attributes.RequiredStringVariable]
             public string Phone { get; set; }
 
   

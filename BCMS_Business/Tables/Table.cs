@@ -12,7 +12,7 @@ namespace BCMS_Business.Tables
         /// </summary>
         public int TableID { get; private set; }
 
-        [Common.Attributes.RequiredVariable]
+        [Common.Attributes.PositiveInteger]
         public int PriceID { get; set; }
 
         public enum enTableType { Caroom = 1, Snooker = 2 };
