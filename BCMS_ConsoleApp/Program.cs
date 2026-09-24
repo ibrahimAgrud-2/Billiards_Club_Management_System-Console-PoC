@@ -8,9 +8,7 @@ namespace BCMS_ConsoleApp
 {
     
     class program
-    {
-
-       
+    {  
         static void Main()
         {//Make coding faster AI 
 
