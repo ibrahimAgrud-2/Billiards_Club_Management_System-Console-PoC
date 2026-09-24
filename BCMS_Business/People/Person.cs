@@ -23,6 +23,8 @@ using static Common.Attributes;
             [Common.Attributes.ValidateDate(-65,-18)]
             public DateTime BirthDate { get; set; }
 
+
+
             [Common.Attributes.RequiredVariable]
             public string Phone { get; set; }
 

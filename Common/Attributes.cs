@@ -25,6 +25,11 @@ namespace Common
         {
             public override bool IsValid(object value, string message)
             {
+                if (value is string && string.IsNullOrEmpty(value.ToString()))
+                {
+                    Console.WriteLine(message);
+                    return false;
+                }
                 if (value == null)
                 {
                     Console.WriteLine(message);

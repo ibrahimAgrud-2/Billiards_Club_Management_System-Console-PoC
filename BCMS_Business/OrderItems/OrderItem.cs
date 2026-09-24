@@ -11,7 +11,7 @@ namespace BCMS_Business.OrderItems
         /// ID Database tarafından verildiği için dışardan set edilememeli.
         /// </summary>
         /// 
-          [Common.Attributes.RequiredVariable]
+         [Common.Attributes.RequiredVariable]
         public int ItemID { get; private set; }
 
         [Common.Attributes.RequiredVariable]
@@ -144,11 +144,7 @@ namespace BCMS_Business.OrderItems
                 return false;
             }
 
-            this.ItemID = OrderItemDataAccess.AddNewOrderItem(
-                this.SessionID,
-                this.ProductID,
-                this.Quantity,
-                this.ProductPrice);
+            this.ItemID = OrderItemDataAccess.AddNewOrderItem(this.SessionID,this.ProductID,this.Quantity,this.ProductPrice);
 
             return (this.ItemID != -1);
         }
