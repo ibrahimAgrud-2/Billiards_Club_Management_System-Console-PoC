@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|c:\\users\\ibrah\\source\\repos\\bcms_consoleapp\\bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9449BD6-EE54-48AA-98C5-6B47E11EEFD5}|BCMS_ConsoleApp\\BCMS_ConsoleApp.csproj|solutionrelative:bcms_consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "BCMS_ConsoleApp\\Program.cs",
               "ToolTip": "C:\\Users\\ibrah\\source\\repos\\BCMS_ConsoleApp\\BCMS_ConsoleApp\\Program.cs",
               "RelativeToolTip": "BCMS_ConsoleApp\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-24T11:14:34.939Z",
               "EditorCaption": ""
