@@ -1,19 +1,20 @@
-﻿using BCMS_Data.Users;
+﻿using BCMS_Business.People;
+using BCMS_Data.People;
+using BCMS_Data.Users;
+using Common;
 using System;
 using System.Data;
 using static Common.Attributes;
 
 namespace BCMS_Business.Users
 {
-    public class User
+    public class User:Person
     {
         /// <summary>
         /// ID Database tarafından verildiği için dışardan set edilememeli.
         /// </summary>
         public int ID { get; private set; }
 
-        [Common.Attributes.PositiveInteger]
-        public int PersonID { get; set; }
 
         [Common.Attributes.RequiredStringVariable]
         public string UserName { get; set; }
@@ -30,11 +31,11 @@ namespace BCMS_Business.Users
         /// Şifreyi 2 defa hash yapmamak adına. Update yaperken şifrenin gerçekten değişip değişmediğini kontrol etmeliyiz
         /// </summary>
         private static string previousPassword;
-        
-  
+
 
         public enum enMode { AddNew = 0, Update = 1 };
-        public enMode Mode { get; private set; } = enMode.AddNew;
+        public enMode Mode { get; set; } = enMode.AddNew;
+
 
 
         /// <summary>
@@ -45,15 +46,26 @@ namespace BCMS_Business.Users
         /// yalnızca kendi içinde (örn. bir factory metodu veya veritabanından
         /// okunan verilerle) örneklenebilmesini sağlamaktır.
         /// </remarks>
-        private User(int ID, int personID, string userName, string password, bool isActive)
+        private User(int id, int personID, string firstName, string lastName,
+                     DateTime birthDate, string phone, string address,
+                     string imagePath, string email,
+                     string userName, string password, bool isActive)   
         {
-            this.ID = ID;
-            PersonID = personID;
+            this.ID = id;
             UserName = userName;
             Password = password;
             IsActive = isActive;
             previousPassword = password;
             Mode = enMode.Update;
+            this.FirstName = firstName;
+            this.Address = address;
+            this.Email = email;
+            this.LastName = lastName;
+            this.Phone = phone;
+            this.ImagePath = imagePath;
+            this.BirthDate = birthDate;
+            this.Mode = enMode.Update;
+            this.PersonID = personID;
         }
 
 
@@ -63,11 +75,10 @@ namespace BCMS_Business.Users
         public User()
         {
             ID = -1;
-            PersonID = -1;
             UserName = "";
             Password = "";
             IsActive = false;
-            Mode = enMode.AddNew;
+            this.Mode = enMode.AddNew;
         }
 
 
@@ -92,10 +103,11 @@ namespace BCMS_Business.Users
             int PersonID = -1;
             bool IsActive = false;
            
-
+          
             if (UserDataAccess.Find(ID, ref PersonID, ref UserName, ref Password, ref IsActive))
             {
-                return new User(ID, PersonID, UserName, Password, IsActive);
+                Person p = Person.Find(PersonID);
+                return new User(ID, PersonID, p.FirstName,p.LastName,p.BirthDate,p.Phone,p.Address,p.ImagePath,p.Email,UserName,Password,IsActive);
             }
             else
             {
@@ -205,10 +217,7 @@ namespace BCMS_Business.Users
                         }
                     }
 
-                    if (true)
-                    {
 
-                    }
                 }
             }
             return true;
@@ -224,6 +233,15 @@ namespace BCMS_Business.Users
         /// <returns>Eğer Add/Update işlemi hatasız olursa true döner</returns>
         public bool Save()
         {
+           base.Mode = (Person.enMode)Mode;
+
+            if(!base.Save())
+            {
+                return false;
+                //Common.Logger.Log(System.Diagnostics.EventLogEntryType.Error,"Person Could Not added. For User");
+            }
+
+
             if (this.Mode == enMode.AddNew)
             {
                 if (_AddNewUser())

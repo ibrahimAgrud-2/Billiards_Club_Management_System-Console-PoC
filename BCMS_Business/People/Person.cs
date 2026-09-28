@@ -11,9 +11,9 @@ using static Common.Attributes;
             /// <summary>
             /// ID Database tarafından verildiği için dışardan set edilememeli.
             /// </summary>
-            public int PersonID { get; private set; }
+            public int PersonID { get; protected set; }
 
-            [Common.Attributes.PositiveInteger]
+            [Common.Attributes.RequiredStringVariable]
             public string FirstName { get; set; }
 
             [Common.Attributes.RequiredStringVariable]
@@ -43,7 +43,7 @@ using static Common.Attributes;
             public string Email { get; set; }
 
             public enum enMode { AddNew = 0, Update = 1 };
-            public enMode Mode { get; private set; } = enMode.AddNew;
+            public enMode Mode { get;  set; } = enMode.AddNew;
 
 
             /// <summary>
@@ -88,15 +88,6 @@ using static Common.Attributes;
         
 
 
-            /// <summary>
-            /// DB'deki tüm person verisini DL'dan alır ve datatable olark return eder.
-            /// </summary>
-            /// <returns></returns>
-            public static DataTable GetPersonList()
-            {
-                return PersonDataAccess.GetPeople();
-            }
-        
         
             /// <summary>
             /// ID ile arama yapar. Eğer DB'de veri varsa o veriyi objeye doldurur

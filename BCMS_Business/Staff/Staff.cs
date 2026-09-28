@@ -1,22 +1,24 @@
 ﻿
+using BCMS_Business.People;
+using BCMS_Business.Users;
 using BCMS_Data;
 using System;
 using System.Data;
+using System.Net;
+using System.Security.Policy;
 using static Common.Attributes;
 
 namespace BCMS_Business.Staff
 {
-    public class Staff
+    public class Staff:Person
     {
         /// <summary>
         /// ID Database tarafından verildiği için dışardan set edilememeli.
         /// </summary>
         public int StaffID { get; private set; }
 
-        [Common.Attributes.PositiveInteger]
-        public int PersonID { get; set; }
 
-        [Common.Attributes.PositiveInteger]
+        [Common.Attributes.SalaryAttribute]
         public decimal Salary { get; set; }
 
         [Common.Attributes.ValidateDate(-65,0)]
@@ -45,7 +47,9 @@ namespace BCMS_Business.Staff
         /// yalnızca kendi içinde (örn. bir factory metodu veya veritabanından
         /// okunan verilerle) örneklenebilmesini sağlamaktır.
         /// </remarks>
-        private Staff(int staffID, int personID, decimal salary, DateTime hireDate, int createdByUserID, DateTime? separationDate, bool stillWorking)
+        private Staff(int staffID, int personID, string firstName, string lastName,
+                     DateTime birthDate, string phone, string address,
+                     string imagePath, string email, decimal salary, DateTime hireDate, int createdByUserID, DateTime? separationDate, bool stillWorking)
         {
             StaffID = staffID;
             PersonID = personID;
@@ -54,6 +58,15 @@ namespace BCMS_Business.Staff
             CreatedByUserID = createdByUserID;
             SeparationDate = separationDate;
             StillWorking = stillWorking;
+            this.FirstName = firstName;
+            this.Address = address;
+            this.Email = email;
+            this.LastName = lastName;
+            this.Phone = phone;
+            this.ImagePath = imagePath;
+            this.BirthDate = birthDate;
+            this.Mode = enMode.Update;
+            this.PersonID = personID;
             Mode = enMode.Update;
         }
 
@@ -91,17 +104,18 @@ namespace BCMS_Business.Staff
         /// <returns>Eğer kayıt bulunabilirse staff objesi eğer bulunamazsa null</returns>
         public static Staff Find(int staffID)
         {
-            int PersonID = -1;
-            decimal Salary = 0;
-            DateTime HireDate = DateTime.Now;
-            int CreatedByUserID = -1;
-            DateTime? SeparationDate = null;
-            bool StillWorking = false;
+            int personID = -1;
+            decimal salary = 0;
+            DateTime hireDate = DateTime.Now;
+            int createdByUserID = -1;
+            DateTime? separationDate = null;
+            bool stillWorking = false;
 
 
-            if (StaffDataAccess.Find(staffID, ref PersonID, ref Salary, ref HireDate, ref CreatedByUserID, ref SeparationDate, ref StillWorking))
+            if (StaffDataAccess.Find(staffID, ref personID, ref salary, ref hireDate, ref createdByUserID, ref separationDate, ref stillWorking))
             {
-                return new Staff(staffID, PersonID, Salary, HireDate, CreatedByUserID, SeparationDate, StillWorking);
+                Person p = Person.Find(personID);
+                return new Staff(staffID, personID, p.FirstName, p.LastName, p.BirthDate, p.Phone, p.Address, p.ImagePath, p.Email,salary,hireDate,createdByUserID,separationDate,stillWorking);
             }
             else
             {
@@ -221,6 +235,16 @@ namespace BCMS_Business.Staff
         /// <returns>Eğer Add/Update işlemi hatasız olursa true döner</returns>
         public bool Save()
         {
+
+            //Add/update işlemlerini save ile yaparız. Bu yüzden staff'ı save etmeden önce person'ı save ederiz. Sonra staff save edilir. Çünkü staff person'u miras olmıştır.
+            base.Mode = (Person.enMode)Mode;
+            if (!base.Save())
+            {
+                return false;
+                //Common.Logger.Log(System.Diagnostics.EventLogEntryType.Error,"Person Could Not added. For User");
+            }
+
+
             if (this.Mode == enMode.AddNew)
             {
                 if (_AddNewStaff())
