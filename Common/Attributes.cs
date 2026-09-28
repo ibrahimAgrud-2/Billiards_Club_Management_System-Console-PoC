@@ -56,7 +56,27 @@ namespace Common
                 return true;
             }
         }
+        [AttributeUsage(AttributeTargets.Property)]
+        public class SalaryAttribute : PropertiesValidationAttribute
+        {
+            public override bool IsValid(object value, string message)
+            {
 
+                if (!(value is decimal result))
+                {
+
+                    Console.WriteLine(message);
+                    return false;
+                }
+                if (result <= 0)
+                {
+                    Console.WriteLine(message);
+                    return false;
+
+                }
+                return true;
+            }
+        }
 
 
 
